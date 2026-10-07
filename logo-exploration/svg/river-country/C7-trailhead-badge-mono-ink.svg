@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="Trailhead Badge logo mark"><defs><clipPath id="g180"><circle cx="60" cy="60" r="54"/></clipPath></defs>
+<circle cx="60" cy="60" r="56.5" fill="#172E49"/>
+<g clip-path="url(#g180)">
+<rect x="0" y="0" width="120" height="120" fill="#172E49"/>
+<circle cx="86" cy="38" r="10" fill="#F5F2E9"/>
+<path d="M4 74L36 44L48 55L62 30L90 64L100 58L124 76V120H4Z" fill="#F5F2E9"/>
+<path d="M-5 70C20 64 40 72 62 68S100 64 125 70V125H-5Z" fill="#172E49"/>
+<path d="M16 58L11.8 65.7H13.9L10.4 72H21.6L18.1 65.7H20.2ZM24 53L18.6 62.9H21.3L16.8 71H31.2L26.7 62.9H29.4ZM32 58L28.4 64.6H30.2L27.2 70H36.8L33.8 64.6H35.6ZM92 56L87.8 63.7H89.9L86.4 70H97.6L94.1 63.7H96.2ZM100 53L94.6 62.9H97.3L92.8 71H107.2L102.7 62.9H105.4ZM108 60L104.4 66.6H106.2L103.2 72H112.8L109.8 66.6H111.6Z" fill="#172E49"/>
+<path d="M58 68H64C67 76 54 82 62 90C67 96 76 104 84 124H36C46 106 50 96 46 88C42 80 56 77 58 68Z" fill="#F5F2E9"/>
+<g transform="translate(40 86) rotate(-28) scale(0.34) translate(-60 -60)"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#F5F2E9" stroke="#172E49" stroke-width="5" stroke-linejoin="round" paint-order="stroke"/><circle cx="96" cy="57" r="4" fill="#172E49"/></g>
+</g></svg>

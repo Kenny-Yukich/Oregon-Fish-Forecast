@@ -1,0 +1,111 @@
+{
+  "schema_version": "0.1",
+  "prepared_on": "2026-10-07",
+  "status": "editorial_seed_not_public_forecasts",
+  "waters": [
+    {
+      "id": "lower-deschutes-warm-springs-trout-creek",
+      "display_name": "Lower Deschutes \u2014 Warm Springs to Trout Creek",
+      "type": "river_reach",
+      "stage": "first_milestone",
+      "timezone": "America/Los_Angeles",
+      "reach_boundaries_status": "needs_review",
+      "regulations_status": "not_verified",
+      "access_status": "not_verified",
+      "public_recommendations_enabled": false,
+      "approved_weather_point": null,
+      "approved_hydrology_mapping": null,
+      "official_report_source": "S10",
+      "candidate_sources": [
+        {
+          "provider": "USGS",
+          "monitoring_location_id": "USGS-14092500",
+          "official_name": "Deschutes River Near Madras, OR",
+          "identity_verified_against": "S7",
+          "current_parameters_verified": false,
+          "reach_representativeness_verified": false,
+          "station_coordinates": {
+            "latitude": 44.7259522504172,
+            "longitude": -121.246993886344
+          },
+          "coordinate_warning": "Gauge coordinates, not a parking/access destination or approved forecast point"
+        }
+      ]
+    },
+    {
+      "id": "crooked-below-bowman",
+      "display_name": "Crooked River \u2014 below Bowman Dam",
+      "type": "river_reach",
+      "stage": "proposed_pilot",
+      "timezone": "America/Los_Angeles",
+      "reach_boundaries_status": "needs_review",
+      "regulations_status": "not_verified",
+      "access_status": "not_verified",
+      "public_recommendations_enabled": false,
+      "approved_weather_point": null,
+      "approved_hydrology_mapping": null,
+      "official_report_source": "S10",
+      "candidate_sources": []
+    },
+    {
+      "id": "metolius-reviewed-reach",
+      "display_name": "Metolius River \u2014 reach to be defined",
+      "type": "river_reach",
+      "stage": "proposed_pilot",
+      "timezone": "America/Los_Angeles",
+      "reach_boundaries_status": "needs_review",
+      "regulations_status": "not_verified",
+      "access_status": "not_verified",
+      "public_recommendations_enabled": false,
+      "approved_weather_point": null,
+      "approved_hydrology_mapping": null,
+      "official_report_source": "S10",
+      "candidate_sources": []
+    },
+    {
+      "id": "fall-river-above-falls",
+      "display_name": "Fall River \u2014 above the falls",
+      "type": "river_reach",
+      "stage": "proposed_pilot",
+      "timezone": "America/Los_Angeles",
+      "reach_boundaries_status": "needs_review",
+      "regulations_status": "not_verified",
+      "access_status": "not_verified",
+      "public_recommendations_enabled": false,
+      "approved_weather_point": null,
+      "approved_hydrology_mapping": null,
+      "official_report_source": "S10",
+      "candidate_sources": []
+    },
+    {
+      "id": "haystack-reservoir",
+      "display_name": "Haystack Reservoir",
+      "type": "reservoir",
+      "stage": "proposed_pilot",
+      "timezone": "America/Los_Angeles",
+      "reach_boundaries_status": "needs_review",
+      "regulations_status": "not_verified",
+      "access_status": "not_verified",
+      "public_recommendations_enabled": false,
+      "approved_weather_point": null,
+      "approved_hydrology_mapping": null,
+      "official_report_source": "S10",
+      "candidate_sources": []
+    },
+    {
+      "id": "lake-billy-chinook-sector",
+      "display_name": "Lake Billy Chinook \u2014 sector to be defined",
+      "type": "reservoir_sector",
+      "stage": "proposed_pilot",
+      "timezone": "America/Los_Angeles",
+      "reach_boundaries_status": "needs_review",
+      "regulations_status": "not_verified",
+      "access_status": "not_verified",
+      "public_recommendations_enabled": false,
+      "approved_weather_point": null,
+      "approved_hydrology_mapping": null,
+      "official_report_source": "S10",
+      "candidate_sources": []
+    }
+  ]
+}

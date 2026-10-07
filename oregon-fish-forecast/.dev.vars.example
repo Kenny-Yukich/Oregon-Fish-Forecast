@@ -1,0 +1,3 @@
+# Copy to .dev.vars locally. Never paste a secret into chat or commit it.
+# USGS_API_KEY=your-key-if-available
+# Default runs real sources, with reach weather withheld pending review.

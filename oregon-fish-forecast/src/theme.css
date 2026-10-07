@@ -1,0 +1,253 @@
+/* Oregon palette supplied by Kenny: flag blue + gold, with evergreen accents. */
+:root {
+  --blue: #002a86;
+  --gold: #ffea0f;
+  --forest: #285d45;
+  --paper: #f5f2e9;
+  --white: #fffef8;
+  --ink: #172e49;
+  --green: var(--forest);
+  --muted: #596975;
+  --line: #d5dcda;
+  --rust: #7a621b;
+  --serif: 'DM Sans', Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+/* Static compositions: bold type, generous space, and one clear visual focus. */
+html { scroll-behavior: auto; }
+*, *::before, *::after { animation: none !important; transition: none !important; }
+h1, h2, h3 { font-weight: 700; letter-spacing: -.04em; }
+h1 em { font-style: normal; }
+.button { border-radius: 999px; min-height: 54px; padding: 17px 24px; }
+.button-primary:hover { transform: none; }
+.section-heading h2 { font-size: 54px; }
+.section-heading > p { font-size: 14px; }
+.coverage-section { padding-block: 92px 80px; }
+.tab { border-radius: 999px; padding: 11px 18px; font-size: 12px; }
+.tag { border-radius: 999px; }
+.water-card, .featured-water, .panel, .reach-card, .planning-card { border-radius: 18px; }
+.featured-water, .reach-card { overflow: hidden; }
+.water-grid { gap: 22px; }
+.featured-water { grid-row: span 2; display: flex; flex-direction: column; }
+.featured-art { flex: 1; min-height: 270px; }
+.featured-water-copy { flex-direction: row; align-items: flex-end; min-height: 164px; padding: 28px; }
+.featured-water-copy h3 { font-size: 33px; }
+.featured-water-copy .round-arrow { flex-shrink: 0; width: 40px; height: 40px; }
+.water-card { min-height: 236px; padding: 28px; }
+.water-card h3 { font-size: 28px; }
+.water-card p { font-size: 13px; }
+.water-card-bottom { font-size: 11px; }
+.approach-banner { border-radius: 22px; padding: 46px; }
+.approach-banner h2 { font-size: 38px; line-height: 1.17; }
+.approach-banner p { font-size: 14px; }
+.banner-fish { transform: none; }
+.footer-brand { font-size: 24px; font-weight: 500; letter-spacing: -.03em; }
+.footer-brand strong { font-weight: 600; }
+.detail-title-row h1 { font-size: 64px; }
+.detail-title-row h1 span { font-size: 16px; }
+.detail-title-row p { font-size: 14px; }
+.metric-card { border-radius: 14px; }
+.metric-value { font-weight: 600; font-variant-numeric: tabular-nums; font-size: 40px; }
+.review-notice, .fixture-notice, .request-error { border-radius: 12px; }
+.range-toggle { border-radius: 999px; }
+.range-toggle button { border-radius: 999px; }
+.reach-stamp { transform: none; }
+.method-content h2 { font-size: 34px; }
+.method-hero h1 { font-weight: 700; line-height: 1.05; }
+.method-hero h1 em { font-weight: 700; }
+.method-callout { border-radius: 14px; }
+
+::selection { background: var(--gold); color: var(--blue); }
+button:focus-visible, a:focus-visible, summary:focus-visible {
+  outline-color: var(--forest);
+}
+.skip-link { color: var(--blue); background: var(--gold); }
+
+/* The flag colors frame the site; green belongs to the river country. */
+.site-header { background: var(--blue); color: var(--white); border: 0; margin: 16px 16px 0; border-radius: 28px; }
+body:has(.home-hero-band) .site-header { border-radius: 28px 28px 0 0; }
+.header-inner { width: min(1304px, calc(100% - 64px)); }
+.site-header nav { background: var(--white); border-radius: 999px; padding: 5px; gap: 2px; }
+.site-header nav a { height: 42px; padding-inline: 20px; border-radius: 999px; color: var(--blue); }
+.brand { color: var(--white); }
+.brand-mark { color: var(--gold); border-color: var(--gold); }
+.brand > span:last-child > span { color: var(--gold); }
+.site-header nav a[aria-current] { color: var(--blue); background: var(--gold); }
+.site-header nav a[aria-current]::after { display: none; }
+.site-header nav a:hover { color: var(--blue); background: #f0efdd; }
+.site-header nav a[aria-current]:hover { background: var(--gold); }
+.pilot-label { color: #fff8bc; }
+.pilot-label > span, .tiny-dot { background: var(--gold); }
+.site-header a:focus-visible, .site-footer a:focus-visible { outline-color: var(--gold); }
+
+.home-hero-band { background: var(--blue); margin: 0 16px 16px; border-radius: 0 0 28px 28px; }
+.home-hero { padding-block: 42px 66px; gap: 48px; min-height: 600px; }
+.hero-copy { color: var(--white); }
+.hero-copy > .eyebrow { color: #fff8bc; font-size: 10px; }
+.short-rule { background: var(--gold); width: 30px; height: 2px; }
+.hero-copy h1 { font-size: clamp(48px, 5.5vw, 80px); font-weight: 700; line-height: 1.02; letter-spacing: -.065em; margin-block: 29px; }
+.hero-copy h1 em { color: var(--gold); font-weight: 700; }
+.hero-copy > p { color: #e1e9f7; font-size: 16px; max-width: 400px; }
+.hero-footnote { color: #d5e1f5; }
+.hero-footnote .tiny-dot { background: var(--gold); }
+.hero-copy a:focus-visible { outline-color: var(--gold); }
+.button-primary { background: var(--gold); color: var(--blue); font-weight: 700; }
+.button-primary:hover { background: #f6dd00; color: var(--blue); }
+.hero-art-wrap { padding: 0; }
+.hero-art-wrap::before { display: none; }
+.river-art { background: var(--forest); }
+.river-art-hero { height: 480px; border-radius: 24px; }
+.river-photo { margin: 0; }
+.river-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.river-art-hero img { object-position: 52% 50%; }
+.river-art-card img { object-position: 50% 58%; }
+.river-art-reach img { object-position: 50% 55%; }
+.river-photo .art-caption { display: block; font-size: 10px; letter-spacing: .04em; }
+.art-caption { color: #fff9d9; background: #193f36e8; left: 16px; right: 16px; padding: 7px; border-radius: 6px; font-size: 9px; }
+.art-tag { background: var(--gold); color: var(--blue); box-shadow: none; top: 18px; bottom: auto; left: 18px; border-radius: 10px; }
+.art-tag span { color: var(--blue); }
+
+.principle-strip { background: var(--forest); border-color: var(--forest); color: var(--white); }
+.principle-strip svg { color: var(--gold); }
+.coverage-section .eyebrow, .section-number { color: var(--forest); }
+.section-heading > p, .water-count, .water-card p, .water-card-bottom { color: var(--muted); }
+.tab { color: var(--blue); }
+.tab.active { background: var(--blue); color: var(--gold); border-color: var(--blue); }
+.tab:hover:not(.active) { background: #e6ecdf; border-color: #b8cbbd; }
+.featured-water { border-color: #bac6c9; box-shadow: inset 0 -3px var(--blue); }
+.featured-water:hover { border-color: var(--blue); }
+.featured-water-copy h3 { color: var(--blue); }
+.featured-water-copy .eyebrow { color: var(--forest); }
+.featured-water-copy p, .coverage-note { color: var(--muted); }
+.tag-paper { background: var(--gold); color: var(--blue); }
+.tag-muted { background: #e2ebde; color: #36563d; }
+.water-card { background: #eff2e8; border-color: #d0d9ce; }
+.water-symbol svg { color: var(--forest); }
+.water-card h3 { color: var(--blue); }
+.water-card-bottom { border-color: #d2dccd; }
+.pending-dot { border-color: #6b856a; }
+.round-arrow { background: var(--blue); color: var(--gold); border-color: var(--blue); }
+.text-link { color: var(--blue); }
+
+.approach-banner { background: #e3ebdc; border-left: 4px solid var(--forest); }
+.approach-banner > .eyebrow { color: var(--forest); }
+.approach-banner h2 { color: var(--blue); }
+.approach-banner p { color: #435e4e; }
+.banner-fish { color: var(--forest); }
+.site-footer { background: var(--blue); color: var(--white); border-top: 4px solid var(--gold); }
+.footer-brand svg, .footer-brand strong { color: var(--gold); }
+.footer-links { color: #d5e1f5; }
+.footer-links > a { color: var(--gold); }
+
+/* Conditions retain green as the measured-data color, with blue structure. */
+.detail-title-row h1, .subsection-heading h2, .panel-heading h2,
+.reach-card h2, .planning-card h2, .report-card h2 { color: var(--blue); }
+.detail-title-row .eyebrow { color: var(--forest); }
+.detail-title-row h1 span, .detail-title-row p, .breadcrumb,
+.detail-toolbar > span { color: var(--muted); }
+.reach-stamp { color: var(--forest); border-color: #8ba28a; }
+.refresh-button { color: var(--blue); }
+.refresh-button:hover { color: var(--forest); }
+.review-notice { background: #f5efd1; border-color: #dbce8d; color: #5a512c; }
+.review-notice > svg { color: #756119; }
+.review-notice strong { color: #413a1e; }
+.review-notice a { color: var(--blue); }
+.gauge-tag { background: #e4eddd; color: #3f603e; }
+.metric-card { border-top: 3px solid var(--blue); }
+.metric-label { color: var(--forest); }
+.metric-value { color: var(--blue); }
+.metric-value > span { color: var(--muted); }
+.value-missing { color: #7b8a94; }
+.status-current { color: var(--forest); }
+.status-current > span { background: var(--forest); }
+.status-stale { color: #806021; }
+.status-stale > span { background: #a98727; }
+.panel-heading .eyebrow { color: var(--forest); }
+.range-toggle button { color: var(--blue); }
+.range-toggle button.active { background: var(--blue); color: var(--gold); }
+.range-toggle button:hover:not(.active) { background: #e4eddf; }
+.trend-chart text { fill: #536570; }
+.chart-footer i { background: var(--forest); }
+.chart-grid { stroke: #dae0dc; }
+.chart-empty { color: #546e59; }
+.chart-empty h4 { color: var(--forest); }
+.chart-empty p, .chart-empty > span { color: #5c6b64; }
+.quiet-icon { background: #edf2e4; border-color: #c5d3b7; }
+.quiet-icon svg { color: var(--forest); }
+.external-link { color: var(--blue); }
+.weather-periods svg { color: #776518; }
+.weather-periods strong { color: var(--blue); }
+.source-details summary { color: var(--blue); }
+.reach-card { background: #e6eddf; border-color: #cdd9c4; }
+.reach-card .eyebrow { color: var(--forest); }
+.planning-card { background: #f5efd8; border-color: #ddd2a4; }
+.planning-card .eyebrow { color: #756119; }
+.planning-row > strong { color: #77571b; }
+.method-hero h1, .method-content h2 { color: var(--blue); }
+.method-hero h1 em { color: var(--forest); }
+.method-callout { border-color: var(--forest); background: #e6eddf; }
+.method-index > a:hover { color: var(--blue); }
+
+@media (max-width: 850px) {
+  .home-hero { gap: 30px; }
+  .hero-copy h1 { font-size: clamp(42px, 6.1vw, 60px); }
+  .site-header nav a { padding-inline: 14px; }
+  .featured-water { grid-column: auto; grid-row: auto; }
+  .featured-art { min-height: 170px; }
+  .featured-water-copy { padding: 22px; }
+  .featured-water-copy h3 { font-size: 29px; }
+  .water-card { padding: 24px; }
+}
+@media (max-width: 620px) {
+  .site-header { margin: 10px 10px 0; border-radius: 20px; padding-bottom: 16px; }
+  body:has(.home-hero-band) .site-header { border-radius: 20px 20px 0 0; }
+  .header-inner { width: calc(100% - 32px); }
+  .site-header nav { width: 100%; padding: 4px; gap: 0; font-size: 10px; }
+  .site-header nav a { flex: 1; justify-content: center; padding-inline: 6px; height: 38px; white-space: nowrap; }
+  .home-hero-band { margin: 0 10px 10px; border-radius: 0 0 20px 20px; }
+  .home-hero { padding-block: 36px 32px; gap: 32px; }
+  .hero-copy h1 { font-size: clamp(34px, 11vw, 52px); letter-spacing: -.065em; margin-block: 24px; }
+  .hero-copy > .eyebrow { font-size: 8px; letter-spacing: .85px; }
+  .hero-copy > p { font-size: 14px; }
+  .hero-copy > p br { display: none; }
+  .river-art-hero { height: 310px; border-radius: 16px; }
+  .hero-copy > .button { font-size: 11px; min-height: 52px; }
+  .hero-footnote { font-size: 10px; }
+  .principle-strip > .wrap { gap: 14px; }
+  .art-caption { font-size: 8px; left: 10px; right: 10px; bottom: 10px; text-align: center; }
+  .art-tag { top: 12px; left: 12px; }
+  .coverage-section { padding-block: 54px; }
+  .section-heading h2 { font-size: 40px; }
+  .section-heading > p { font-size: 13px; }
+  .tab { font-size: 10px; padding: 10px 12px; }
+  .water-card { min-height: 210px; }
+  .water-card h3 { font-size: 28px; }
+  .water-card p { font-size: 13px; }
+  .featured-art { flex: auto; min-height: 200px; }
+  .featured-water-copy { min-height: 164px; }
+  .approach-banner { padding: 28px 24px; }
+  .approach-banner h2 { font-size: 30px; }
+  .approach-banner p { font-size: 13px; }
+  .detail-title-row h1 { font-size: 42px; letter-spacing: -.055em; }
+  .detail-title-row h1 span { font-size: 13px; }
+  .detail-title-row p { font-size: 12px; }
+  .subsection-heading h2 { font-size: 27px; }
+  .panel-heading h2 { font-size: 26px; }
+  .metric-value { font-size: 36px; }
+  .reach-card h2, .planning-card h2, .report-card h2 { font-size: 28px; }
+  .method-hero h1 { font-size: 40px; }
+  .method-content h2 { font-size: 28px; }
+}
+@media (max-width: 360px) {
+  .hero-copy h1 { font-size: 36px; }
+  .hero-copy > .eyebrow { font-size: 7px; }
+  .detail-title-row h1 { font-size: 37px; }
+  .subsection-heading h2 { font-size: 23px; }
+  .metric-value { font-size: 32px; }
+  .metric-label h3 { font-size: 11px; }
+  .panel-heading { flex-wrap: wrap; }
+  .section-heading h2 { font-size: 36px; }
+  .method-hero h1 { font-size: 35px; }
+}

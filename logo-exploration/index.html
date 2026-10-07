@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oregon Fish Forecast logo exploration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#002A86;--gold:#FFEA0F;--forest:#285D45;--paper:#F5F2E9;--white:#FFFEF8;--ink:#172E49;--muted:#596975;--line:#d5dcda}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 'DM Sans',Arial,sans-serif}
+.wrap{width:min(1180px,calc(100% - 40px));margin-inline:auto}
+.top{background:var(--blue);color:var(--white);padding:56px 0 52px;border-radius:0 0 28px 28px;margin:0 12px}
+.top .eyebrow{color:#fff8bc;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+h1{font-size:clamp(34px,5.4vw,60px);letter-spacing:-.05em;line-height:1.03;margin:14px 0 16px;font-weight:700}
+h1 em{font-style:normal;color:var(--gold)}
+.top p{max-width:62ch;color:#e1e9f7;margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#ffffff14;border:1px solid #ffffff2e;border-radius:999px;padding:6px 14px 6px 8px;font-size:12px;color:#e1e9f7}
+.chip i{width:16px;height:16px;border-radius:50%;display:block;border:1px solid #ffffff55}
+h2{font-size:clamp(26px,3.4vw,38px);letter-spacing:-.04em;line-height:1.1;margin:0;color:var(--blue)}
+h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--forest);margin:0 0 6px}
+h4{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 10px;font-weight:600}
+.overview-sec{padding:44px 0 8px}
+.overview-sec h2{margin-bottom:6px}
+.overview-sec>.wrap>p{color:var(--muted);margin:0 0 22px;max-width:62ch}
+.overview{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.ov{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--ink);background:var(--white)}
+.ov:hover{border-color:var(--blue)}
+.ov-art{display:grid;place-items:center;padding:14px 8px}
+.ov-art svg{width:60px;height:60px}
+.ov-name{grid-column:1/-1;padding:10px 14px;font-size:14px;font-weight:600;color:var(--blue);border-top:1px solid var(--line)}
+.ov-name b{color:var(--forest);margin-right:4px}
+.ov.current .ov-name{color:var(--muted);font-weight:500}
+.cur svg{width:50px;height:50px;display:block}
+.on-paper{background:var(--white)}
+.on-blue{background:var(--blue)}
+.concept{padding:60px 0 12px;border-top:1px solid var(--line);margin-top:48px}
+.c-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:22px}
+.c-id{flex:none;width:46px;height:46px;border-radius:50%;background:var(--blue);color:var(--gold);display:grid;place-items:center;font-weight:700;font-size:20px}
+.c-head p{margin:6px 0 0;font-size:18px;max-width:64ch;color:#2a3f57}
+.c-grid{display:grid;grid-template-columns:300px 300px 1fr;gap:16px;align-items:stretch}
+.stage{margin:0;border-radius:20px;display:grid;place-items:center;min-height:300px;border:1px solid var(--line)}
+.stage.on-blue{border-color:var(--blue)}
+.stage svg{max-width:100%;height:auto}
+.notes{background:#e6eddf;border:1px solid #cdd9c4;border-radius:20px;padding:24px 26px}
+.notes p{margin:0 0 18px;font-size:15px}
+.notes p:last-child{margin-bottom:0}
+.c-lockups{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+.lockup{border-radius:20px;padding:30px 34px;display:flex;align-items:center;gap:14px;min-height:118px;border:1px solid var(--line)}
+.lock-blue{background:var(--blue);color:var(--white);border-color:var(--blue)}
+.lock-paper{background:var(--white);color:var(--blue)}
+.lm svg{display:block}
+.lt{display:block;line-height:1}
+.lt b{display:block;font-size:22px;letter-spacing:.17em;font-weight:700}
+.lt i{display:block;font-style:normal;font-size:9.5px;letter-spacing:.34em;margin-top:7px;font-weight:600}
+.lock-blue .lt i{color:var(--gold)}
+.lock-paper .lt i{color:var(--forest)}
+.lockup.wm{flex-direction:column;align-items:flex-start;justify-content:center;gap:8px}
+.wm-text{font-size:clamp(26px,3.3vw,40px);font-weight:800;letter-spacing:-.05em;line-height:1}
+.lock-blue .wm-text em{color:var(--gold);font-style:normal}
+.lock-paper .wm-text em{color:var(--forest);font-style:normal}
+.lock-blue .tail{color:var(--gold)}.lock-paper .tail{color:var(--blue)}
+.tail{width:min(300px,70%);height:auto;display:block}
+.c-tests{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr) minmax(0,1fr) minmax(0,.9fr);gap:16px;margin-top:16px;align-items:stretch}
+.cws{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cw{margin:0;border:1px solid var(--line);border-radius:16px;display:grid;justify-items:center;gap:8px;padding:14px 6px 10px}
+.cw.on-blue{border-color:var(--blue)}
+.cw figcaption{font-size:10px;text-align:center;color:var(--muted);line-height:1.25}
+.cw.on-blue figcaption{color:#d5e1f5}
+.ladder,.tile{border-radius:16px;padding:16px 18px;border:1px solid var(--line)}
+.ladder.on-blue{border-color:var(--blue)}
+.ladder.on-blue h4{color:#d5e1f5}
+.ladder>div,.tile>div{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.tile{background:var(--white)}
+.sz{display:grid;justify-items:center;gap:6px}
+.sz small{font-size:10px;color:var(--muted)}
+.ladder.on-blue .sz small{color:#d5e1f5}
+.verdict{margin:70px 0 80px;background:var(--forest);color:var(--white);border-radius:24px;padding:44px 48px}
+.verdict h2{color:var(--white)}
+.verdict h2 em{font-style:normal;color:var(--gold)}
+.verdict p{max-width:68ch;margin:12px 0 0;color:#e3ebdc}
+.verdict ul{margin:14px 0 0;padding-left:20px;max-width:68ch;color:#e3ebdc}
+.verdict li{margin:4px 0}
+footer.note{padding:0 0 60px;color:var(--muted);font-size:13px}
+@media (max-width:1020px){.c-grid{grid-template-columns:1fr 1fr}.notes{grid-column:1/-1}.c-tests{grid-template-columns:1fr 1fr}.cws{grid-column:1/-1}}
+@media (max-width:640px){.c-grid,.c-lockups,.c-tests{grid-template-columns:1fr}.cws{grid-template-columns:repeat(2,1fr)}.stage{min-height:0;padding:20px}.stage svg{width:220px}.verdict{padding:30px 24px}.lockup{padding:22px}}
+</style></head><body><header class="top"><div class="wrap"><span class="eyebrow">Oregon Fish Forecast · Logo exploration</span>
+<h1>Six directions for <em>the mark</em></h1>
+<p>All original, all built on the site’s existing palette and DM Sans. Each concept is shown as a large mark, a header lockup, four colorways, and a small-size test. Nothing here is wired into the site yet.</p>
+<p>The reference TikTok account’s branding is deliberately not echoed anywhere, per the build brief.</p>
+<div class="chips"><span class="chip"><i style="background:#002A86"></i>Oregon blue #002A86</span><span class="chip"><i style="background:#FFEA0F"></i>Oregon gold #FFEA0F</span><span class="chip"><i style="background:#285D45"></i>Forest #285D45</span><span class="chip"><i style="background:#F5F2E9"></i>Paper #F5F2E9</span><span class="chip"><i style="background:#172E49"></i>Ink #172E49</span></div></div></header>
+<section class="overview-sec"><div class="wrap"><h2>Side by side</h2><p>Click a card to jump to that concept. Left cell is on paper, right cell is on the header blue.</p><div class="overview"><div class="ov current"><span class="ov-art on-paper"><span class="cur" style="color:#002A86"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 34C21 15 39 20 47 30l9-8v23l-9-9C33 50 18 45 8 34Z" stroke="#002A86" stroke-width="2.6" stroke-linejoin="round"/><circle cx="20" cy="31" r="1.8" fill="#002A86"/><path d="m28 24 6-9 6 11M28 42l6 8 6-9" stroke="#002A86" stroke-width="2" stroke-linejoin="round"/></svg></span></span><span class="ov-art on-blue"><span class="cur" style="color:#FFEA0F"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 34C21 15 39 20 47 30l9-8v23l-9-9C33 50 18 45 8 34Z" stroke="#FFEA0F" stroke-width="2.6" stroke-linejoin="round"/><circle cx="20" cy="31" r="1.8" fill="#FFEA0F"/><path d="m28 24 6-9 6 11M28 42l6 8 6-9" stroke="#FFEA0F" stroke-width="2" stroke-linejoin="round"/></svg></span></span><span class="ov-name"><b>—</b> Current mark (for reference)</span></div><a class="ov" href="#concept-A"><span class="ov-art on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#FFEA0F"/></svg></span><span class="ov-art on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#002A86" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#002A86"/></svg></span><span class="ov-name"><b>A</b> Lateral Line</span></a><a class="ov" href="#concept-B"><span class="ov-art on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="First Light logo mark"><defs><clipPath id="g1"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g1)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+<circle cx="60" cy="60" r="54.5" fill="none" stroke="#002A86" stroke-width="3"/></svg></span><span class="ov-art on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="First Light logo mark"><defs><clipPath id="g2"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g2)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</svg></span><span class="ov-name"><b>B</b> First Light</span></a><a class="ov" href="#concept-C"><span class="ov-art on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="River Country logo mark"><defs><clipPath id="g3"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86" stroke="#002A86" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g3)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg></span><span class="ov-art on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="River Country logo mark"><defs><clipPath id="g4"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g4)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg></span><span class="ov-name"><b>C</b> River Country</span></a><a class="ov" href="#concept-D"><span class="ov-art on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#002A86" stroke="#002A86" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#FFEA0F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#002A86" stroke="#FFEA0F" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#FFEA0F"/>
+</g></svg></span><span class="ov-art on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></svg></span><span class="ov-name"><b>D</b> State Line</span></a><a class="ov" href="#concept-E"><span class="ov-art on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="The Float logo mark"><defs><mask id="g5" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g5)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#002A86" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#002A86" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#002A86" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg></span><span class="ov-art on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="The Float logo mark"><defs><mask id="g6" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g6)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg></span><span class="ov-name"><b>E</b> The Float</span></a><a class="ov" href="#concept-F"><span class="ov-art on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#002A86"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#FFEA0F"/></svg></span><span class="ov-art on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="84" height="84" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#FFEA0F"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#002A86"/></svg></span><span class="ov-name"><b>F</b> Type-First</span></a></div></div></section><div class="wrap"><section class="concept" id="concept-A">
+  <header class="c-head"><span class="c-id">A</span><div><h2>Lateral Line</h2><p>A trout whose lateral line is the river’s flow chart, ending at the eye as the “now” reading.</p></div></header>
+  <div class="c-grid">
+    <figure class="stage on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#FFEA0F"/></svg></figure>
+    <figure class="stage on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#002A86" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#002A86"/></svg></figure>
+    <div class="notes"><h3>Why it fits</h3><p>A fish’s lateral line is the organ that senses current, so the mark says “measured water” without looking like a chart widget. It is unmistakably fishing, and it matches the brief’s data-first, no-hype stance.</p><h3>Watch-outs</h3><p>The line and eye-dot detail drops out below about 28 px, so small sizes use a plain fish with an eye. The silhouette is still a generic fish rather than recognizably a trout.</p></div>
+  </div>
+  <div class="c-lockups"><div class="lockup lock-blue"><span class="lm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="52" height="52" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#002A86" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#002A86"/></svg></span><span class="lt"><b>OREGON</b><i>FISH FORECAST</i></span></div><div class="lockup lock-paper"><span class="lm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="52" height="52" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#FFEA0F"/></svg></span><span class="lt"><b>OREGON</b><i>FISH FORECAST</i></span></div></div>
+  <div class="c-tests">
+    <div class="cws"><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#FFEA0F"/></svg><figcaption>Full color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#002A86" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#002A86"/></svg><figcaption>Reversed</figcaption></figure><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#172E49"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#F5F2E9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#F5F2E9"/></svg><figcaption>One color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#002A86" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#002A86"/></svg><figcaption>One color, reversed</figcaption></figure></div>
+    <div class="ladder on-paper"><h4>Small sizes</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/><circle cx="96" cy="57" r="5" fill="#FFEA0F"/></svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/><circle cx="96" cy="57" r="5" fill="#FFEA0F"/></svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/><circle cx="96" cy="57" r="5" fill="#FFEA0F"/></svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#FFEA0F"/></svg><small>48</small></span></div></div>
+    <div class="ladder on-blue"><h4>Small sizes, reversed</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/><circle cx="96" cy="57" r="5" fill="#002A86"/></svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/><circle cx="96" cy="57" r="5" fill="#002A86"/></svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/><circle cx="96" cy="57" r="5" fill="#002A86"/></svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="Lateral Line logo mark"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#002A86" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#002A86"/></svg><small>48</small></span></div></div>
+    <div class="tile"><h4>Favicon tile</h4><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="72" height="72" role="img" aria-label="Lateral Line icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/>
+<polyline points="26,60 33,60 39,58.5 45,61 51,57 57,53.5 63,57.5 69,59.5 77,58 85,57 96,57" fill="none" stroke="#002A86" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="96" cy="57" r="3.8" fill="#002A86"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="Lateral Line icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/><circle cx="96" cy="57" r="5" fill="#002A86"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="Lateral Line icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFEA0F"/><circle cx="96" cy="57" r="5" fill="#002A86"/></g></svg></div></div>
+  </div>
+</section>
+<section class="concept" id="concept-B">
+  <header class="c-head"><span class="c-id">B</span><div><h2>First Light</h2><p>A gold sunrise disc with a daylight arc of hour ticks, and a trout leaping out of the water toward it.</p></div></header>
+  <div class="c-grid">
+    <figure class="stage on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="First Light logo mark"><defs><clipPath id="g7"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g7)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+<circle cx="60" cy="60" r="54.5" fill="none" stroke="#002A86" stroke-width="3"/></svg></figure>
+    <figure class="stage on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="First Light logo mark"><defs><clipPath id="g8"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g8)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</svg></figure>
+    <div class="notes"><h3>Why it fits</h3><p>It speaks to “When to go” and makes the flag gold the hero. The tick arc reads as daylight hours or a river-gauge dial, and the round badge works as a header mark, favicon and social avatar with no extra framing.</p><h3>Watch-outs</h3><p>A fish leaping at the sun is a familiar trope. The ticks and wave lines drop out at 32 px and below, leaving a gold disc with a dark fish.</p></div>
+  </div>
+  <div class="c-lockups"><div class="lockup lock-blue"><span class="lm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="52" height="52" role="img" aria-label="First Light logo mark"><defs><clipPath id="g9"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g9)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</svg></span><span class="lt"><b>OREGON</b><i>FISH FORECAST</i></span></div><div class="lockup lock-paper"><span class="lm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="52" height="52" role="img" aria-label="First Light logo mark"><defs><clipPath id="g10"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g10)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+<circle cx="60" cy="60" r="54.5" fill="none" stroke="#002A86" stroke-width="3"/></svg></span><span class="lt"><b>OREGON</b><i>FISH FORECAST</i></span></div></div>
+  <div class="c-tests">
+    <div class="cws"><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="First Light logo mark"><defs><clipPath id="g11"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g11)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+<circle cx="60" cy="60" r="54.5" fill="none" stroke="#002A86" stroke-width="3"/></svg><figcaption>Full color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="First Light logo mark"><defs><clipPath id="g12"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g12)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</svg><figcaption>Reversed</figcaption></figure><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="First Light logo mark"><defs><clipPath id="g13"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#172E49"/>
+<g clip-path="url(#g13)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#F5F2E9"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#172E49" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#F5F2E9" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#F5F2E9" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#F5F2E9" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#F5F2E9" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#F5F2E9" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#F5F2E9" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#F5F2E9" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#F5F2E9" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#F5F2E9" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#F5F2E9" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#F5F2E9" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#F5F2E9" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#F5F2E9" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#F5F2E9"/>
+<circle cx="96" cy="57" r="3.6" fill="#172E49"/>
+</g>
+</svg><figcaption>One color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="First Light logo mark"><defs><clipPath id="g14"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFFEF8"/>
+<g clip-path="url(#g14)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFFEF8" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFFEF8"/>
+</g>
+</svg><figcaption>One color, reversed</figcaption></figure></div>
+    <div class="ladder on-paper"><h4>Small sizes</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="First Light logo mark"><defs><clipPath id="g15"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g15)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+
+</g>
+
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+<circle cx="60" cy="60" r="54.5" fill="none" stroke="#002A86" stroke-width="3"/></svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="First Light logo mark"><defs><clipPath id="g16"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g16)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+
+</g>
+
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+<circle cx="60" cy="60" r="54.5" fill="none" stroke="#002A86" stroke-width="3"/></svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="First Light logo mark"><defs><clipPath id="g17"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g17)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+
+</g>
+
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+<circle cx="60" cy="60" r="54.5" fill="none" stroke="#002A86" stroke-width="3"/></svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="First Light logo mark"><defs><clipPath id="g18"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g18)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+<circle cx="60" cy="60" r="54.5" fill="none" stroke="#002A86" stroke-width="3"/></svg><small>48</small></span></div></div>
+    <div class="ladder on-blue"><h4>Small sizes, reversed</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="First Light logo mark"><defs><clipPath id="g19"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g19)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+
+</g>
+
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="First Light logo mark"><defs><clipPath id="g20"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g20)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+
+</g>
+
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="First Light logo mark"><defs><clipPath id="g21"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g21)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+
+</g>
+
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="First Light logo mark"><defs><clipPath id="g22"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g22)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</svg><small>48</small></span></div></div>
+    <div class="tile"><h4>Favicon tile</h4><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="72" height="72" role="img" aria-label="First Light icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><clipPath id="g23"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g23)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="First Light icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><clipPath id="g24"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g24)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+
+</g>
+
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="First Light icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><clipPath id="g25"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g25)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+
+</g>
+
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</g></svg></div></div>
+  </div>
+</section>
+<section class="concept" id="concept-C">
+  <header class="c-head"><span class="c-id">C</span><div><h2>River Country</h2><p>A trout filled with the landscape: the sun as its eye, a snow peak, forest, and a winding river.</p></div></header>
+  <div class="c-grid">
+    <figure class="stage on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="River Country logo mark"><defs><clipPath id="g26"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86" stroke="#002A86" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g26)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg></figure>
+    <figure class="stage on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="River Country logo mark"><defs><clipPath id="g27"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g27)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg></figure>
+    <div class="notes"><h3>Why it fits</h3><p>It carries the hero illustration into the logo and leads with place, which is the “Where to fish” half of the message.</p><h3>Watch-outs</h3><p>The most detail of any option and the most dependent on color. It is weakest in one color and at small sizes.</p></div>
+  </div>
+  <div class="c-lockups"><div class="lockup lock-blue"><span class="lm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="52" height="52" role="img" aria-label="River Country logo mark"><defs><clipPath id="g28"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g28)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg></span><span class="lt"><b>OREGON</b><i>FISH FORECAST</i></span></div><div class="lockup lock-paper"><span class="lm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="52" height="52" role="img" aria-label="River Country logo mark"><defs><clipPath id="g29"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86" stroke="#002A86" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g29)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg></span><span class="lt"><b>OREGON</b><i>FISH FORECAST</i></span></div></div>
+  <div class="c-tests">
+    <div class="cws"><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="River Country logo mark"><defs><clipPath id="g30"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86" stroke="#002A86" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g30)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg><figcaption>Full color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="River Country logo mark"><defs><clipPath id="g31"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g31)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg><figcaption>Reversed</figcaption></figure><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="River Country logo mark"><defs><clipPath id="g32"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#172E49" stroke="#172E49" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g32)">
+<rect x="0" y="0" width="120" height="120" fill="#172E49"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#F5F2E9"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#172E49"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#F5F2E9"/>
+<circle cx="96" cy="57" r="5.2" fill="#F5F2E9"/>
+</g></svg><figcaption>One color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="River Country logo mark"><defs><clipPath id="g33"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g33)">
+<rect x="0" y="0" width="120" height="120" fill="#FFFEF8"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#002A86"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#FFFEF8"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="5.2" fill="#002A86"/>
+</g></svg><figcaption>One color, reversed</figcaption></figure></div>
+    <div class="ladder on-paper"><h4>Small sizes</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="River Country logo mark"><defs><clipPath id="g34"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86" stroke="#002A86" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g34)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="River Country logo mark"><defs><clipPath id="g35"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86" stroke="#002A86" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g35)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="River Country logo mark"><defs><clipPath id="g36"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86" stroke="#002A86" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g36)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="River Country logo mark"><defs><clipPath id="g37"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86" stroke="#002A86" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g37)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg><small>48</small></span></div></div>
+    <div class="ladder on-blue"><h4>Small sizes, reversed</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="River Country logo mark"><defs><clipPath id="g38"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g38)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="River Country logo mark"><defs><clipPath id="g39"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g39)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="River Country logo mark"><defs><clipPath id="g40"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g40)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="River Country logo mark"><defs><clipPath id="g41"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g41)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></svg><small>48</small></span></div></div>
+    <div class="tile"><h4>Favicon tile</h4><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="72" height="72" role="img" aria-label="River Country icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><clipPath id="g42"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g42)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+<path d="M62.5 63L67.5 63C69.5 69 60.5 72 64.5 77C66.5 80 72 83 76 87L48 87C55 83 58 80 56 76C54 71 61 69 62.5 63Z" fill="#4B82AA"/>
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="River Country icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><clipPath id="g43"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g43)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="River Country icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><clipPath id="g44"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g44)">
+<rect x="0" y="0" width="120" height="120" fill="#002A86"/>
+<path d="M33 64L65 30.5L97 64Z" fill="#FFFEF8"/>
+<path d="M-5 63C16 58 36 65 58 63S98 60 125 65V125H-5Z" fill="#285D45"/>
+
+<circle cx="96" cy="57" r="5.2" fill="#FFEA0F"/>
+</g></g></svg></div></div>
+  </div>
+</section>
+<section class="concept" id="concept-D">
+  <header class="c-head"><span class="c-id">D</span><div><h2>State Line</h2><p>The Oregon silhouette with the Deschutes drawn in gold and a gauge dot at Madras, the first station in the brief.</p></div></header>
+  <div class="c-grid">
+    <figure class="stage on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#002A86" stroke="#002A86" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#FFEA0F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#002A86" stroke="#FFEA0F" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#FFEA0F"/>
+</g></svg></figure>
+    <figure class="stage on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></svg></figure>
+    <div class="notes"><h3>Why it fits</h3><p>Unmistakably Oregon, with room to grow statewide. The dot marks the real USGS Madras gauge, so the mark carries the “measured” story too.</p><h3>Watch-outs</h3><p>There is no fish in the mark, so the wordmark must do that work. A whole-state shape also implies statewide coverage while the pilot is Central Oregon only. The outline is a simplified approximation.</p></div>
+  </div>
+  <div class="c-lockups"><div class="lockup lock-blue"><span class="lm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="52" height="52" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></svg></span><span class="lt"><b>OREGON</b><i>FISH FORECAST</i></span></div><div class="lockup lock-paper"><span class="lm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="52" height="52" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#002A86" stroke="#002A86" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#FFEA0F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#002A86" stroke="#FFEA0F" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#FFEA0F"/>
+</g></svg></span><span class="lt"><b>OREGON</b><i>FISH FORECAST</i></span></div></div>
+  <div class="c-tests">
+    <div class="cws"><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#002A86" stroke="#002A86" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#FFEA0F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#002A86" stroke="#FFEA0F" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#FFEA0F"/>
+</g></svg><figcaption>Full color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></svg><figcaption>Reversed</figcaption></figure><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#172E49" stroke="#172E49" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#F5F2E9" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#172E49" stroke="#F5F2E9" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#F5F2E9"/>
+</g></svg><figcaption>One color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFFEF8" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></svg><figcaption>One color, reversed</figcaption></figure></div>
+    <div class="ladder on-paper"><h4>Small sizes</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#002A86" stroke="#002A86" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#FFEA0F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#002A86" stroke="#FFEA0F" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#FFEA0F"/>
+</g></svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#002A86" stroke="#002A86" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#FFEA0F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#002A86" stroke="#FFEA0F" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#FFEA0F"/>
+</g></svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#002A86" stroke="#002A86" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#FFEA0F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#002A86" stroke="#FFEA0F" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#FFEA0F"/>
+</g></svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#002A86" stroke="#002A86" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#FFEA0F" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#002A86" stroke="#FFEA0F" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#FFEA0F"/>
+</g></svg><small>48</small></span></div></div>
+    <div class="ladder on-blue"><h4>Small sizes, reversed</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="State Line logo mark"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></svg><small>48</small></span></div></div>
+    <div class="tile"><h4>Favicon tile</h4><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="72" height="72" role="img" aria-label="State Line icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="State Line icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="State Line icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><g transform="translate(5 19.5) scale(1.1)">
+<path d="M7.6 1.7L20 3.4L22.3 11.1L41.8 12L53.9 9.9L65 6.5L69 5.1L94.4 5.1L96.8 8.6L99.3 17.2L96.8 25.7L93.1 32.6L93 39.4L93 73.7L0 73.7L0.1 59.3L3.3 50L5.7 39.4L6.2 28.6L7.4 13.7Z" fill="#FFEA0F" stroke="#FFEA0F" stroke-width="3" stroke-linejoin="round"/>
+<path d="M34.4 46C38.5 42.5 41 40.5 40.6 35.5S42.4 29 41.8 24.5S44.2 18 45.1 11.6" fill="none" stroke="#002A86" stroke-width="3.4" stroke-linecap="round"/>
+<circle cx="41.9" cy="28.6" r="6.6" fill="#FFEA0F" stroke="#002A86" stroke-width="2.2"/>
+<circle cx="41.9" cy="28.6" r="2.9" fill="#002A86"/>
+</g></g></svg></div></div>
+  </div>
+</section>
+<section class="concept" id="concept-E">
+  <header class="c-head"><span class="c-id">E</span><div><h2>The Float</h2><p>A fishing float sitting on the waterline: gold above the surface, a muted half below it.</p></div></header>
+  <div class="c-grid">
+    <figure class="stage on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="The Float logo mark"><defs><mask id="g45" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g45)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#002A86" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#002A86" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#002A86" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg></figure>
+    <figure class="stage on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="The Float logo mark"><defs><mask id="g46" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g46)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg></figure>
+    <div class="notes"><h3>Why it fits</h3><p>The simplest and most ownable option. It avoids the fish cliché, reads as “watching the water,” and holds up at favicon size.</p><h3>Watch-outs</h3><p>It does not say Oregon. Floats suggest bait and kids’ fishing, while the pilot waters are mostly fly and trout water.</p></div>
+  </div>
+  <div class="c-lockups"><div class="lockup lock-blue"><span class="lm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="52" height="52" role="img" aria-label="The Float logo mark"><defs><mask id="g47" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g47)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg></span><span class="lt"><b>OREGON</b><i>FISH FORECAST</i></span></div><div class="lockup lock-paper"><span class="lm"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="52" height="52" role="img" aria-label="The Float logo mark"><defs><mask id="g48" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g48)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#002A86" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#002A86" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#002A86" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg></span><span class="lt"><b>OREGON</b><i>FISH FORECAST</i></span></div></div>
+  <div class="c-tests">
+    <div class="cws"><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="The Float logo mark"><defs><mask id="g49" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g49)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#002A86" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#002A86" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#002A86" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg><figcaption>Full color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="The Float logo mark"><defs><mask id="g50" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g50)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg><figcaption>Reversed</figcaption></figure><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="The Float logo mark"><defs><mask id="g51" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g51)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#172E49" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="none"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#172E49" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#172E49" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#172E49" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#172E49" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#172E49" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg><figcaption>One color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="The Float logo mark"><defs><mask id="g52" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g52)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="none"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg><figcaption>One color, reversed</figcaption></figure></div>
+    <div class="ladder on-paper"><h4>Small sizes</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="The Float logo mark"><defs><mask id="g53" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g53)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#002A86" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#002A86" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+</svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="The Float logo mark"><defs><mask id="g54" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g54)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#002A86" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#002A86" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+</svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="The Float logo mark"><defs><mask id="g55" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g55)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#002A86" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#002A86" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+</svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="The Float logo mark"><defs><mask id="g56" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g56)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#002A86" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#002A86" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#002A86" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#002A86" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg><small>48</small></span></div></div>
+    <div class="ladder on-blue"><h4>Small sizes, reversed</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="The Float logo mark"><defs><mask id="g57" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g57)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+</svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="The Float logo mark"><defs><mask id="g58" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g58)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+</svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="The Float logo mark"><defs><mask id="g59" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g59)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+</svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="The Float logo mark"><defs><mask id="g60" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g60)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg><small>48</small></span></div></div>
+    <div class="tile"><h4>Favicon tile</h4><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="72" height="72" role="img" aria-label="The Float icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><mask id="g61" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g61)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="The Float icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><mask id="g62" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g62)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+</g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="The Float icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><mask id="g63" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g63)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+</g></svg></div></div>
+  </div>
+</section>
+<section class="concept" id="concept-F">
+  <header class="c-head"><span class="c-id">F</span><div><h2>Type-First</h2><p>A heavy wordmark whose river-line underline forks like a tail, plus an F with swallowtail arms for icons.</p></div></header>
+  <div class="c-grid">
+    <figure class="stage on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#002A86"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#FFEA0F"/></svg></figure>
+    <figure class="stage on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="260" height="260" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#FFEA0F"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#002A86"/></svg></figure>
+    <div class="notes"><h3>Why it fits</h3><p>The cheapest to maintain and closest to the site’s bold DM Sans look. The notched arms also read as a weather pennant, which suits a forecast.</p><h3>Watch-outs</h3><p>Least memorable on its own. Do not use an “OFF” monogram: it reads as switched off.</p></div>
+  </div>
+  <div class="c-lockups"><div class="lockup wm lock-blue"><span class="wm-text">Oregon <em>Fish</em> Forecast</span><svg class="tail" viewBox="0 0 320 30" fill="none" aria-hidden="true" preserveAspectRatio="xMinYMid meet"><path d="M3 16C22 4 40 28 60 16S98 4 118 16S156 28 176 16S214 4 234 16S258 22 272 16" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M268 16L312 2C304 10 304 22 312 30Z" fill="currentColor"/></svg></div><div class="lockup wm lock-paper"><span class="wm-text">Oregon <em>Fish</em> Forecast</span><svg class="tail" viewBox="0 0 320 30" fill="none" aria-hidden="true" preserveAspectRatio="xMinYMid meet"><path d="M3 16C22 4 40 28 60 16S98 4 118 16S156 28 176 16S214 4 234 16S258 22 272 16" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/><path d="M268 16L312 2C304 10 304 22 312 30Z" fill="currentColor"/></svg></div></div>
+  <div class="c-tests">
+    <div class="cws"><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#002A86"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#FFEA0F"/></svg><figcaption>Full color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#FFEA0F"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#002A86"/></svg><figcaption>Reversed</figcaption></figure><figure class="cw on-paper"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#172E49"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#F5F2E9"/></svg><figcaption>One color</figcaption></figure><figure class="cw on-blue"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="76" height="76" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#FFFEF8"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#002A86"/></svg><figcaption>One color, reversed</figcaption></figure></div>
+    <div class="ladder on-paper"><h4>Small sizes</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#002A86"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#FFEA0F"/></svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#002A86"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#FFEA0F"/></svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#002A86"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#FFEA0F"/></svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#002A86"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#FFEA0F"/></svg><small>48</small></span></div></div>
+    <div class="ladder on-blue"><h4>Small sizes, reversed</h4><div><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#FFEA0F"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#002A86"/></svg><small>16</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="24" height="24" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#FFEA0F"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#002A86"/></svg><small>24</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#FFEA0F"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#002A86"/></svg><small>32</small></span><span class="sz"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="48" height="48" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#FFEA0F"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#002A86"/></svg><small>48</small></span></div></div>
+    <div class="tile"><h4>Favicon tile</h4><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="72" height="72" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#002A86"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#FFEA0F"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="32" height="32" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#002A86"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#FFEA0F"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="16" height="16" role="img" aria-label="Type-First logo mark"><rect x="6" y="6" width="108" height="108" rx="26" fill="#002A86"/>
+<path d="M38 28H90L82 38L90 48H52V60H78L71 66L78 72H52V94H38Z" fill="#FFEA0F"/></svg></div></div>
+  </div>
+</section><section class="verdict"><h2>Starting point: <em>B, First Light</em></h2>
+<p>It is the most finished at every size, and the only option that works as the header mark, the favicon and a round social avatar without extra framing. The brief plans social reports, so the avatar matters. Its gold disc echoes the sun in the hero illustration and the gold already used in the header, and the tick arc reads as both daylight hours and a gauge dial, which covers “When to go” and the measured-data story together.</p>
+<ul>
+<li><b>Next refinement:</b> borrow A’s idea by drawing the water surface as a flow trace instead of wave lines, so the data story lives inside the badge.</li>
+<li><b>Before adopting:</b> convert the lockup text to outlines, confirm the fish silhouette reads as a trout at 16 px on a real device, and swap the site favicon.</li>
+<li><b>Runner-up:</b> A (Lateral Line) has the best concept but needs a tile to work as an avatar. E (The Float) is the simplest and most distinctive if you would rather avoid fish.</li>
+</ul></section><footer class="note">Generated by build-sheet.mjs. Marks are hand-built SVG; lockup text is live DM Sans and would be converted to outlines for production files. The Oregon outline in D is a simplified approximation.</footer></div></body></html>

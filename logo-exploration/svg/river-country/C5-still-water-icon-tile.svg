@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="Still Water icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><clipPath id="g172"><path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z"/></clipPath></defs>
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM77 47.5L65 31.5L53 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#FFFEF8" stroke="#FFFEF8" stroke-width="7" stroke-linejoin="round"/>
+<g clip-path="url(#g172)"><rect x="0" y="0" width="120" height="120" fill="#002A86"/><path d="M36 63L65 30.5L94 63Z" fill="#FFFEF8"/>
+<path d="M-5 63H125V125H-5Z" fill="#4B82AA"/>
+<path d="M36 63L65 88L94 63Z" fill="#FFFEF8" opacity="0.5"/>
+
+<path d="M-5 63H125" stroke="#FFFEF8" stroke-width="1" opacity="0.6"/>
+<circle cx="96" cy="56.5" r="5.2" fill="#FFEA0F"/></g></g></svg>

@@ -1,0 +1,176 @@
+{
+  "browser": "153.0.8010.12",
+  "errors": [],
+  "layouts": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "concepts": 7,
+      "duplicateIds": [],
+      "missingClips": []
+    },
+    {
+      "width": 768,
+      "scrollWidth": 768,
+      "concepts": 7,
+      "duplicateIds": [],
+      "missingClips": []
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "concepts": 7,
+      "duplicateIds": [],
+      "missingClips": []
+    },
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "concepts": 7,
+      "duplicateIds": [],
+      "missingClips": []
+    }
+  ],
+  "assets": [
+    {
+      "file": "C1-original-icon-tile.svg",
+      "valid": true
+    },
+    {
+      "file": "C1-original-mono-ink.svg",
+      "valid": true
+    },
+    {
+      "file": "C1-original-mono-white.svg",
+      "valid": true
+    },
+    {
+      "file": "C1-original-on-blue.svg",
+      "valid": true
+    },
+    {
+      "file": "C1-original-on-paper.svg",
+      "valid": true
+    },
+    {
+      "file": "C2-timberline-icon-tile.svg",
+      "valid": true
+    },
+    {
+      "file": "C2-timberline-mono-ink.svg",
+      "valid": true
+    },
+    {
+      "file": "C2-timberline-mono-white.svg",
+      "valid": true
+    },
+    {
+      "file": "C2-timberline-on-blue.svg",
+      "valid": true
+    },
+    {
+      "file": "C2-timberline-on-paper.svg",
+      "valid": true
+    },
+    {
+      "file": "C3-three-sisters-icon-tile.svg",
+      "valid": true
+    },
+    {
+      "file": "C3-three-sisters-mono-ink.svg",
+      "valid": true
+    },
+    {
+      "file": "C3-three-sisters-mono-white.svg",
+      "valid": true
+    },
+    {
+      "file": "C3-three-sisters-on-blue.svg",
+      "valid": true
+    },
+    {
+      "file": "C3-three-sisters-on-paper.svg",
+      "valid": true
+    },
+    {
+      "file": "C4-canyon-country-icon-tile.svg",
+      "valid": true
+    },
+    {
+      "file": "C4-canyon-country-mono-ink.svg",
+      "valid": true
+    },
+    {
+      "file": "C4-canyon-country-mono-white.svg",
+      "valid": true
+    },
+    {
+      "file": "C4-canyon-country-on-blue.svg",
+      "valid": true
+    },
+    {
+      "file": "C4-canyon-country-on-paper.svg",
+      "valid": true
+    },
+    {
+      "file": "C5-still-water-icon-tile.svg",
+      "valid": true
+    },
+    {
+      "file": "C5-still-water-mono-ink.svg",
+      "valid": true
+    },
+    {
+      "file": "C5-still-water-mono-white.svg",
+      "valid": true
+    },
+    {
+      "file": "C5-still-water-on-blue.svg",
+      "valid": true
+    },
+    {
+      "file": "C5-still-water-on-paper.svg",
+      "valid": true
+    },
+    {
+      "file": "C6-sunrise-bands-icon-tile.svg",
+      "valid": true
+    },
+    {
+      "file": "C6-sunrise-bands-mono-ink.svg",
+      "valid": true
+    },
+    {
+      "file": "C6-sunrise-bands-mono-white.svg",
+      "valid": true
+    },
+    {
+      "file": "C6-sunrise-bands-on-blue.svg",
+      "valid": true
+    },
+    {
+      "file": "C6-sunrise-bands-on-paper.svg",
+      "valid": true
+    },
+    {
+      "file": "C7-trailhead-badge-icon-tile.svg",
+      "valid": true
+    },
+    {
+      "file": "C7-trailhead-badge-mono-ink.svg",
+      "valid": true
+    },
+    {
+      "file": "C7-trailhead-badge-mono-white.svg",
+      "valid": true
+    },
+    {
+      "file": "C7-trailhead-badge-on-blue.svg",
+      "valid": true
+    },
+    {
+      "file": "C7-trailhead-badge-on-paper.svg",
+      "valid": true
+    }
+  ]
+}

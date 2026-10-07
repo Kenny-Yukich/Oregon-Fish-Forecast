@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="The Float logo mark"><defs><mask id="g75" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120"><rect width="120" height="120" fill="#fff"/><path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#000" stroke-width="11" stroke-linecap="round"/></mask></defs>
+<g mask="url(#g75)">
+<line x1="60" y1="12" x2="60" y2="38" stroke="#FFFEF8" stroke-width="6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 1 87 64Z" fill="#FFEA0F"/>
+<path d="M33 64A27 27 0 0 0 87 64Z" fill="#FFFEF8" opacity=".5"/>
+<path d="M33 64A27 27 0 0 1 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M33 64A27 27 0 0 0 87 64" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round" opacity=".5"/>
+</g>
+<path d="M6 64q9-6 18 0t18 0t18 0t18 0t18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="4.6" stroke-linecap="round"/>
+<path d="M30 92q9-5 18 0t18 0t18 0M42 104q9-5 18 0t18 0" fill="none" stroke="#FFFEF8" stroke-width="3.6" stroke-linecap="round" opacity=".75"/></svg>

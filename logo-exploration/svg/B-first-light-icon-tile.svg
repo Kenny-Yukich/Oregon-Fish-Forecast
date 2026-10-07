@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="512" height="512" role="img" aria-label="First Light icon tile"><rect x="2" y="2" width="116" height="116" rx="28" fill="#002A86"/>
+<g transform="translate(60 60) scale(.74) translate(-60 -60)"><defs><clipPath id="g68"><circle cx="60" cy="60" r="56"/></clipPath></defs>
+<circle cx="60" cy="60" r="56" fill="#FFEA0F"/>
+<g clip-path="url(#g68)">
+<path d="M0 86C15 80 28 91 44 86S74 80 90 86S110 90 120 86V120H0Z" fill="#002A86"/>
+<path d="M30 99q8-4 16 0t16 0t16 0M44 109q6-3 12 0t12 0" fill="none" stroke="#FFEA0F" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<line x1="17.0" y1="60.0" x2="8.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="15.1" y1="48.0" x2="10.3" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="19.7" y1="36.8" x2="15.4" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="29.6" y1="29.6" x2="23.6" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="36.7" y1="19.7" x2="34.2" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="48.0" y1="15.1" x2="46.7" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="60.0" y1="17.0" x2="60.0" y2="8.5" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="72.0" y1="15.1" x2="73.3" y2="10.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="83.2" y1="19.7" x2="85.7" y2="15.4" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="90.4" y1="29.6" x2="96.4" y2="23.6" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<line x1="100.3" y1="36.8" x2="104.6" y2="34.3" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="104.9" y1="48.0" x2="109.7" y2="46.7" stroke="#002A86" stroke-width="2.2" stroke-linecap="round"/>
+<line x1="103.0" y1="60.0" x2="111.5" y2="60.0" stroke="#002A86" stroke-width="3.2" stroke-linecap="round"/>
+<g transform="translate(60 52) rotate(-32) scale(.66) translate(-60 -60)">
+<path d="M111 60.5C106 52.5 97 47.5 86 46C74 44.5 62 44.5 51 48C43 50 37 53 31 56L9 44C12 51 15 56 15 60C15 64 12 69 9 76L31 64C37 68 44 72 54 74.5C68 77.5 82 76.5 94 72C102 69 108.5 65.5 111 60.5ZM79 47.5C77 45.5 75.5 43 74 40.5C71 37.5 68 36 64 35.5C60 37.5 57 41 54 47.5ZM60 74L55 84L68 75.5ZM40 68.5L36 76L47 72Z" fill="#002A86"/>
+<circle cx="96" cy="57" r="3.6" fill="#FFEA0F"/>
+</g>
+</g></svg>

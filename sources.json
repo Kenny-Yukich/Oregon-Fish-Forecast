@@ -1,0 +1,126 @@
+{
+  "version": "0.1",
+  "scope": "reference_documents_not_live_ingestion_approval",
+  "live_json_delivery_verified": false,
+  "sources": [
+    {
+      "id": "R1",
+      "title": "Redside README",
+      "url": "https://github.com/Kenny-Yukich/Redside/blob/main/README.md",
+      "checked_on": "2026-10-07",
+      "verification": "repository_text_read"
+    },
+    {
+      "id": "R2",
+      "title": "Redside conditions code",
+      "url": "https://github.com/Kenny-Yukich/Redside/blob/main/js/conditions.js",
+      "checked_on": "2026-10-07",
+      "verification": "repository_text_read"
+    },
+    {
+      "id": "S1",
+      "title": "USGS retirement notice",
+      "url": "https://waterdata.usgs.gov/blog/api-waterservices-decom",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S2",
+      "title": "USGS migration guide",
+      "url": "https://api.waterdata.usgs.gov/docs/ogcapi/migration/",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S3",
+      "title": "USGS OGC API overview",
+      "url": "https://api.waterdata.usgs.gov/docs/ogcapi/",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S4",
+      "title": "USGS keys",
+      "url": "https://api.waterdata.usgs.gov/docs/ogcapi/keys/",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S5",
+      "title": "NWS API",
+      "url": "https://www.weather.gov/documentation/services-web-api",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S6",
+      "title": "Open-Meteo terms",
+      "url": "https://open-meteo.com/en/terms",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S7",
+      "title": "Madras station",
+      "url": "https://waterdata.usgs.gov/monitoring-location/USGS-14092500/",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S8",
+      "title": "Culver station",
+      "url": "https://waterdata.usgs.gov/monitoring-location/USGS-14076500/",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S9",
+      "title": "Historical Crooked station",
+      "url": "https://waterdata.usgs.gov/monitoring-location/USGS-14080500/",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S10",
+      "title": "ODFW Central Zone report",
+      "url": "https://myodfw.com/recreation-report/fishing-report/central-zone",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S11",
+      "title": "ODFW stocking",
+      "url": "https://myodfw.com/fishing/species/trout/stocking-schedule",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S12",
+      "title": "Cloudflare static assets",
+      "url": "https://developers.cloudflare.com/workers/static-assets/",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S13",
+      "title": "Cloudflare Cron Triggers",
+      "url": "https://developers.cloudflare.com/workers/configuration/cron-triggers/",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S14",
+      "title": "Cloudflare custom domains",
+      "url": "https://developers.cloudflare.com/workers/configuration/routing/custom-domains/",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    },
+    {
+      "id": "S15",
+      "title": "USGS latest-continuous fields",
+      "url": "https://api.waterdata.usgs.gov/ogcapi/v1/collections/latest-continuous/queryables?f=html",
+      "checked_on": "2026-10-07",
+      "verification": "official_documentation_or_page_read"
+    }
+  ]
+}

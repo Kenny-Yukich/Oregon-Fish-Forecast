@@ -1,0 +1,25 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.dev.vars
+node_modules/
+.wrangler/
+source-check.json
+.npm-cache/
+dist/
+.worker-build/
+test-results/
+playwright-report/
+*.log
+d405d0b6-f1b6-4e85-b35d-56cc85355fd.txt
+
+# Local generation operations and account-specific reference metadata.
+homepage-exploration/api-input-*.json
+homepage-exploration/api-job-*.json
+homepage-exploration/higgsfield_api.py
+homepage-exploration/higgsfield-concepts.json
+
+# Source photographs are kept in the app's public/photos directory.
+/*.jpg
