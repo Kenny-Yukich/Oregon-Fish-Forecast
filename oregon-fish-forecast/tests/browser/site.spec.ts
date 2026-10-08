@@ -63,20 +63,12 @@ for (const width of [375, 320]) {
   }
 }
 
-test('primary navigation and coverage filters work from the keyboard', async ({ page }) => {
+test('primary navigation works from the keyboard', async ({ page }) => {
   await intercept(page);
   await page.goto('/');
   await page.keyboard.press('Tab');
   await expect(page.getByRole('link', { name: 'Skip to content' })).toBeFocused();
   await expect(page.getByRole('link', { name: 'Skip to content' })).toBeVisible();
-
-  const lakes = page.getByRole('button', { name: 'Lakes & reservoirs' });
-  await lakes.focus();
-  await page.keyboard.press('Enter');
-  await expect(lakes).toHaveAttribute('aria-pressed', 'true');
-  await expect(lakes).toBeFocused();
-  await expect(page.getByRole('heading', { name: 'Haystack Reservoir' })).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Crooked River' })).toHaveCount(0);
 
   const riverNav = page.getByRole('navigation').getByRole('link', { name: 'River conditions' });
   await riverNav.focus();
@@ -90,6 +82,70 @@ test('primary navigation and coverage filters work from the keyboard', async ({ 
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Not a crystal ball.');
   await page.goBack();
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Lower Deschutes');
+});
+
+test('homepage artwork loads and the featured reach opens the available conditions page', async ({ page }) => {
+  let conditionsRequests = 0;
+  await page.route(`**${apiPath}`, route => {
+    conditionsRequests += 1;
+    return route.fulfill({ json: conditionsFixture() });
+  });
+  await page.goto('/');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Get to know the water.');
+
+  for (const selector of ['.field-guide-hero-image', '.brand-mark img']) {
+    const image = page.locator(selector);
+    await expect(image).toBeVisible();
+    await expect.poll(() => image.evaluate((node: HTMLImageElement) => (
+      node.complete && node.naturalWidth > 0 && node.naturalHeight > 0
+    ))).toBe(true);
+  }
+  expect(conditionsRequests).toBe(0);
+
+  const reach = page.locator('.featured-reach');
+  await expect(reach).toContainText('Warm Springs to Trout Creek');
+  await expect(reach).toContainText('Reach review in progress');
+  const explore = reach.getByRole('link', { name: 'Explore the Lower Deschutes' });
+  await expect(explore).toHaveAttribute('href', waterPath);
+  await explore.focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(new RegExp(`${waterPath}$`));
+  await expect(metric(page, 'River flow')).toContainText('4,321');
+  expect(conditionsRequests).toBeGreaterThan(0);
+});
+
+test('proposed waters expand with the keyboard and link to coverage review instead of unavailable conditions', async ({ page }) => {
+  await page.goto('/');
+  const names = ['Crooked River', 'Metolius River', 'Fall River', 'Haystack Reservoir', 'Lake Billy Chinook'];
+  await expect(page.locator('details.proposed-water')).toHaveCount(names.length);
+
+  for (const name of names) {
+    const row = page.locator('details.proposed-water').filter({ has: page.locator('summary').filter({ hasText: name }) });
+    const summary = row.locator('summary');
+    const reviewLink = row.locator('a[href="/methodology#coverage"]');
+    await expect(summary).toContainText('Proposed coverage');
+    await expect(row).toHaveJSProperty('open', false);
+    await expect(reviewLink).toBeHidden();
+    await expect(row.locator('a[href^="/waters/"]')).toHaveCount(0);
+
+    await summary.focus();
+    await page.keyboard.press('Enter');
+    await expect(row).toHaveJSProperty('open', true);
+    await expect(summary).toBeFocused();
+    await expect(row).toContainText(/review/i);
+    await expect(reviewLink).toBeVisible();
+    await page.keyboard.press('Space');
+    await expect(row).toHaveJSProperty('open', false);
+    await expect(summary).toBeFocused();
+  }
+
+  const firstRow = page.locator('details.proposed-water').first();
+  await firstRow.locator('summary').focus();
+  await page.keyboard.press('Enter');
+  await firstRow.locator('a[href="/methodology#coverage"]').focus();
+  await page.keyboard.press('Enter');
+  await expect(page).toHaveURL(/\/methodology#coverage$/);
+  await expect(page.getByRole('heading', { name: 'One reach at a time.' })).toBeVisible();
 });
 
 test('measured readings show units, original timestamps and provenance without inventing temperature', async ({ page }) => {

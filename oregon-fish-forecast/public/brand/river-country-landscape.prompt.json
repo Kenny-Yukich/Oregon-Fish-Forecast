@@ -1,0 +1,12 @@
+{
+  "mode": "built-in imagegen edit",
+  "use_case": "background-extraction",
+  "source_reference": "homepage-exploration/3-conditions-field-guide-landscape-v3.png",
+  "generated_original_path": "C:/Users/kenny.yukich/.codex/generated_images/01a1185e-ce28-72a3-8dd0-8dcee209a6ea/exec-adbded79-2d31-450d-8129-9f37dc3f1280.png",
+  "output": "river-country-landscape.png",
+  "width": 1717,
+  "height": 916,
+  "transparent_background": true,
+  "prompt": "Use case: background-extraction.\nAsset type: a standalone transparent PNG illustration for the top-right hero area of the Oregon Fish Forecast website.\nInput image 1 is the edit target and exact visual reference: a complete homepage screenshot. Extract and faithfully recreate ONLY the illustrated landscape at its upper right: the dramatic blue snow-capped mountains, evergreen pine forest, winding blue river flowing from the background toward the lower-right foreground, flat golden sun above the peaks, small riverbank rocks and restrained golden foliage. This is the hand-drawn vector-style landscape illustration beside the headline, NOT either photograph and NOT the fish logo.\nPreserve the exact composition, relative position of mountains/sun/river/trees, crisp shapes, mature outdoor field-guide style, and visual density of that illustration. Mountain and rocky shadow blue #002A86, evergreen #285D45 with a few related green planes, medium blue river, cream #F5F2E9 mountain snow and light details, gold #FFEA0F sun. Preserve the cream-colored painted snow and river highlights as opaque details, while all empty sky and area OUTSIDE the freestanding landscape silhouette must be truly transparent alpha, not cream/white/checkerboard.\nOutput one tightly framed wide landscape asset, approximately 1200x640 with intrinsic ratio between 1.8:1 and 2:1. Fit the complete landscape silhouette with only about 3 percent breathing room around its outermost edges. This will display at about 600x330 CSS pixels. No border, no rectangular background, no page, no UI, no text, no fish, no brand wordmark, no photographs, no mockup. Clean antialiased edges and transparent background.",
+  "notes": "Original generated PNG preserved unchanged at its generated_images path; workspace asset copied without image processing. Visually inspected; alpha-zero outer corners confirmed."
+}

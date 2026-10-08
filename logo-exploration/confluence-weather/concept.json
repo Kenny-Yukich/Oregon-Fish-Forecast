@@ -1,0 +1,20 @@
+{
+  "project": "Oregon Fish Forecast",
+  "date": "2026-10-08",
+  "baseLogo": "C — Confluence Trout (round 2, option 3)",
+  "generator": "Built-in image generation; chosen to include the user's attached map directly",
+  "output": "lake-billy-chinook-weather-v1.png",
+  "states": [
+    "Sunny",
+    "Cloudy",
+    "Rainy",
+    "Snowy"
+  ],
+  "references": [
+    "../round-2/3-confluence-trout.png",
+    "User-provided Lake Billy Chinook map attachment"
+  ],
+  "concept": "Persistent fish and lake-inspired negative space, with a changing weather accent above the shoulder.",
+  "status": "Raster concept only; simplified geography, not a verified cartographic trace or implemented live forecast.",
+  "finalRefinementPrompt": "Edit the newly generated four-panel 'CONFLUENCE / CHANGING SKIES' logo board, using the other attached image—the user's dark satellite map of Lake Billy Chinook—as the geographic reference.\n\nKEEP the board layout, weather symbols, labels SUNNY/CLOUDY/RAINY/SNOWY, blue and evergreen trout, golden eye, OREGON FISH FORECAST wordmark, typography and paper background unchanged. The only required change is the cream water silhouette inside each fish. Apply the same corrected silhouette consistently to all four marks.\n\nThe current water cutout is still an ordinary Y and is missing the lake's distinctive fork below its junction. Correct the TOPOLOGY and PROPORTIONS using the map. Follow the filled dark-blue water, not the thin property boundaries, highway, terrain or pin.\n\nLake Billy Chinook in this north-up map has a LONG BENT WESTERN ARM extending left from the central junction; below the junction there are TWO DISTINCT SOUTHERN WATER ARMS, one extending southwest and the other extending southeast, separated by a substantial peninsula of land. The screenshot also shows a narrower short northern connection above the main junction. Preserve that recognizable asymmetry. The western arm is longer than the other arms. The two downward arms must BOTH be visible, and must not merge into one fat diagonal slash. The green land between the two southern arms must remain visible.\n\nTranslate this map silhouette into one connected cream negative-space lake inside the fish: main western arm leftward across the body, southwest arm descending toward the lower-left body, southeast arm descending toward the lower-right belly, short narrower northern connection toward the upper body. Keep their relative bearings natural to the map. The branching must read as the actual irregular reservoir with a southern fork, not a symmetrical letter Y, a cross, a lightning bolt or an arbitrary branch. Include a few large characteristic bends; remove tiny jagged shoreline texture. Use minimal proportional fit adjustment so it remains legible without changing the fish silhouette. Keep the channel widths adequate for a logo.\n\nDo not claim cartographic precision or add map labels to the artwork. This is a geographically informed, simplified logo concept. Prioritize the recognizable Lake Billy Chinook outline. No extra graphic elements or new concept designs."
+}

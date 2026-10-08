@@ -1,0 +1,12 @@
+{
+  "title": "Conditions Field Guide with landscape hero and sun-eye branding",
+  "version": 3,
+  "generator": "Built-in image generation",
+  "asset": "3-conditions-field-guide-landscape-v3.png",
+  "references": [
+    "3-conditions-field-guide-sun-eye-v2.png",
+    "3-conditions-field-guide.png"
+  ],
+  "scope": "Selected visual target for website implementation; landscape hero restored.",
+  "prompt": "Use case: precise-object-edit.\nCreate one revised Oregon Fish Forecast homepage mockup. Make ONE local change only.\n\nImage 1 is the EDIT TARGET: the latest homepage with the new weather-fish logo in the header, a giant weather fish in the upper-right hero, and matching small fish marks elsewhere.\nImage 2 is a SUPPORTING RESTORATION REFERENCE: the original selected homepage with a mountain, pine forest, winding river and golden sun illustration in its upper-right hero.\n\nUSER CORRECTION: They do not want the big logo in the top right.\n\nReplace ONLY the giant fish occupying the upper-right hero of image 1 with the mountain-and-river landscape illustration from the corresponding upper-right area of image 2. Restore the snowy blue mountains, evergreen forest, winding blue river, and small golden sun on the warm cream background. Fit it naturally into the exact existing illustration slot, with the same balanced scale and whitespace as the original homepage. No fish silhouette or giant logo in the hero.\n\nKeep all other areas of image 1 unchanged: the NEW small weather-fish logo in the blue header and footer; header white wordmark and navigation; left hero headline \"Get to know the water.\" and its copy; the Lower Deschutes panel, photo, yellow button and review status; all three supporting columns; the corrected River flow copy \"Validated gauge observations, with visible measurement times.\"; proposed-coverage list and its small icons; lower river photo; and footer.\nDo not restore the old header logo from image 2. Image 2 supplies ONLY its hero landscape illustration.\n\nMatch image 1 full-page desktop webpage composition and aspect ratio, target dimensions 1084 x 1451. Keep page content sharp and readable, with no device or browser chrome. Oregon blue #002A86, warm cream #F5F2E9, evergreen #285D45, yellow #FFEA0F. No redesign, no new content, no extra logos, no layout shifts or cropped sections. One webpage mockup only."
+}

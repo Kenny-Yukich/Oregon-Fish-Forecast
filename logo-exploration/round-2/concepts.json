@@ -1,0 +1,46 @@
+{
+  "project": "Oregon Fish Forecast",
+  "round": 2,
+  "date": "2026-10-08",
+  "generator": "Higgsfield GPT Image 2.5 Flare",
+  "promptSet": "api-prompts.json",
+  "outputs": [
+    {
+      "label": "A",
+      "name": "Peakback Trout",
+      "file": "1-peakback-trout.png",
+      "format": "PNG concept proof"
+    },
+    {
+      "label": "B",
+      "name": "Timbercut Trout",
+      "file": "2-timbercut-trout.png",
+      "format": "PNG concept proof"
+    },
+    {
+      "label": "C",
+      "name": "Confluence Trout",
+      "file": "3-confluence-trout.png",
+      "format": "PNG concept proof"
+    },
+    {
+      "label": "D",
+      "name": "River O",
+      "file": "4-river-o.png",
+      "format": "PNG concept proof"
+    },
+    {
+      "label": "E",
+      "name": "Headwaters Pennant",
+      "file": "5-headwaters-pennant.png",
+      "format": "PNG concept proof"
+    },
+    {
+      "label": "F",
+      "name": "River Gate",
+      "file": "6-river-gate.png",
+      "format": "PNG concept proof"
+    }
+  ],
+  "notes": "Exploratory raster logo concepts. Color and one-color treatments are generated studies; final vector artwork and exact small-size reproduction have not been created."
+}
