@@ -1,5 +1,7 @@
 import './styles.css';
 import './theme.css';
+import './field-guide.css';
+import { fieldGuideHome } from './home';
 import { riverPhoto } from './photos';
 import type { Conditions, HistoryPoint, Observation, Parameter, Trend } from '../shared/types';
 
@@ -10,14 +12,13 @@ let snapshot: Conditions | null = null;
 let loading = false;
 let requestError = '';
 let trendHours = 72;
-let coverageFilter = 'all';
 let lastRenderedPath = '';
 let lastFetchAt = 0;
 const currentPath = () => location.pathname.replace(/\/$/, '') || '/';
 
 const arrow = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const external = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12 12 4M4 4h8v8" stroke="currentColor" stroke-width="1.4"/></svg>';
-const fish = '<svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M8 34C21 15 39 20 47 30l9-8v23l-9-9C33 50 18 45 8 34Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><circle cx="20" cy="31" r="1.8" fill="currentColor"/><path d="m28 24 6-9 6 11M28 42l6 8 6-9" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>';
+const fish = '<img class="weather-fish" src="/brand/weather-fish.webp" width="720" height="348" alt="" decoding="async">';
 const icons: Record<string, string> = {
   flow: '<path d="M3 7c3-4 6 4 9 0s6 4 9 0M3 12c3-4 6 4 9 0s6 4 9 0M3 17c3-4 6 4 9 0s6 4 9 0"/>',
   height: '<path d="M7 3v18M4 6l3-3 3 3M4 18l3 3 3-3M14 6h6M14 12h6M14 18h6"/>',
@@ -62,22 +63,11 @@ function header() {
   const path = currentPath();
   return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" data-nav href="/" aria-label="Oregon Fish Forecast home"><span class="brand-mark">${fish}</span><span>OREGON<span>FISH FORECAST</span></span></a><nav aria-label="Main navigation"><a data-nav href="/" ${path === '/' ? 'aria-current="page"' : ''}>The waters</a><a data-nav href="${WATER_PATH}" ${path === WATER_PATH ? 'aria-current="page"' : ''}>River conditions</a><a data-nav href="/methodology" ${path === '/methodology' ? 'aria-current="page"' : ''}>Our approach</a></nav><span class="pilot-label"><span></span>CENTRAL OREGON PILOT</span></div></header>`;
 }
-function footer() { return `<footer class="site-footer"><div class="footer-inner"><a class="footer-brand" data-nav href="/">${fish}<span>Good days start with<br><strong>knowing the water.</strong></span></a><div class="footer-links"><a data-nav href="/methodology">Sources & methodology ${arrow}</a><span>Oregon Fish Forecast · Central Oregon pilot</span><span>Observations inform a trip. They don’t guarantee a catch.</span></div></div></footer>`; }
-
-const waters = [
-  { name: 'Crooked River', reach: 'Below Bowman Dam', type: 'river', detail: 'Flow source & reach review' },
-  { name: 'Metolius River', reach: 'Reach to be defined', type: 'river', detail: 'Boundaries & sensor review' },
-  { name: 'Fall River', reach: 'Above the falls', type: 'river', detail: 'Boundaries & rules review' },
-  { name: 'Haystack Reservoir', reach: 'Bank-fishing conditions', type: 'lake', detail: 'Access & weather point review' },
-  { name: 'Lake Billy Chinook', reach: 'Sector to be defined', type: 'lake', detail: 'Sector & jurisdiction review' },
-];
-function home() {
-  return `<main id="main"><div class="home-hero-band"><section class="home-hero wrap"><div class="hero-copy"><div class="eyebrow"><span class="short-rule"></span> ROOTED IN OREGON. DRAWN TO WATER.</div><h1>Oregon water.<br><em>Worth knowing.</em></h1><p>From high-desert mornings to days on the Deschutes.<br> Get to know the water before you head out.</p><a class="button button-primary" data-nav href="${WATER_PATH}">Explore the Lower Deschutes ${arrow}</a><div class="hero-footnote"><span class="tiny-dot"></span> Starting small. One Central Oregon reach at a time.</div></div><div class="hero-art-wrap">${riverPhoto()}<div class="art-tag">RIVER COUNTRY <span>CENTRAL OREGON</span></div></div></section></div>
-  <section class="principle-strip"><div class="wrap"><span>${icon('flow')} Measured river conditions</span><span>${icon('sun')} Source-linked weather</span><span>${icon('book')} Clear sources. Honest limits.</span></div></section>
-  <section class="coverage-section wrap" id="waters"><div class="section-heading"><div><div class="eyebrow">THE CENTRAL OREGON FIELD GUIDE</div><h2>Find your water.</h2></div><p>A small pilot with a careful approach.<br> Coverage grows as each source and reach is reviewed.</p></div><div class="coverage-controls"><div class="tabs" role="group" aria-label="Filter waters">${[['all', 'All waters'], ['river', 'Rivers'], ['lake', 'Lakes & reservoirs']].map(([id, label]) => `<button class="tab ${coverageFilter === id ? 'active' : ''}" data-filter="${id}" aria-pressed="${coverageFilter === id}">${label}</button>`).join('')}</div><span class="water-count">${coverageFilter === 'all' ? '6' : coverageFilter === 'river' ? '4' : '2'} proposed pilot waters</span></div>
-  <div class="water-grid">${coverageFilter !== 'lake' ? `<a class="featured-water" data-nav href="${WATER_PATH}"><div class="featured-art">${riverPhoto('card')}<span class="tag tag-paper">FIRST CONDITIONS PAGE</span></div><div class="featured-water-copy"><div><span class="eyebrow">RIVER REACH / CENTRAL OREGON</span><h3>Lower Deschutes</h3><p>Warm Springs to Trout Creek</p><span class="coverage-note">Gauge observations · Reach review in progress</span></div><span class="round-arrow">${arrow}</span></div></a>` : ''}${waters.filter(w => coverageFilter === 'all' || w.type === coverageFilter).map(w => `<article class="water-card"><div class="water-card-top"><span class="water-symbol">${icon(w.type === 'river' ? 'flow' : 'location')}</span><span class="tag tag-muted">PROPOSED COVERAGE</span></div><h3>${w.name}</h3><p>${w.reach}</p><div class="water-card-bottom"><span>${w.detail}</span><span class="pending-dot" aria-label="Not yet available"></span></div></article>`).join('')}</div></section>
-  <section class="approach-banner wrap"><div class="eyebrow">A BETTER KIND OF FISHING REPORT</div><div><h2>The source matters.<br>So does what we don’t know.</h2><p>No mystery bite scores. No made-up readings. Just measured conditions, visible timestamps, and a clear line between what’s observed and what’s still being reviewed.</p><a class="text-link" data-nav href="/methodology">Get to know our approach ${arrow}</a></div><span class="banner-fish">${fish}</span></section></main>`;
+function footer() {
+  return `<footer class="site-footer"><div class="footer-inner"><div class="footer-signature"><a class="footer-brand" data-nav href="/" aria-label="Oregon Fish Forecast home">${fish}</a><a class="footer-approach" data-nav href="/methodology"><span>The source matters.</span><strong>Our approach.</strong></a></div><div class="footer-place"><span>${icon('flow')} Central Oregon</span><small>Clean water. Healthy fish. Resilient landscapes.</small></div></div></footer>`;
 }
+
+function home() { return fieldGuideHome({ waterPath: WATER_PATH, fish, arrow, icon }); }
 
 function metric(parameter: Parameter, label: string, iconName: string, unit: string) {
   const obs = snapshot?.observations.find(o => o.parameter_code === parameter);
@@ -161,6 +151,7 @@ function render(restoreFocus?: string) {
   document.title = path === WATER_PATH ? 'Lower Deschutes conditions — Oregon Fish Forecast' : path === '/methodology' ? 'Our approach — Oregon Fish Forecast' : 'Oregon Fish Forecast — Know the water.';
   const body = path === WATER_PATH ? detail() : path === '/methodology' ? methodology() : path === '/' ? home() : `<main id="main" class="wrap not-found"><span class="eyebrow">OFF THE BEATEN PATH</span><h1>This water isn’t on our map.</h1><p>The pilot starts with one Lower Deschutes conditions page.</p><a data-nav class="button button-primary" href="/">Back to the waters ${arrow}</a></main>`;
   app.innerHTML = header() + body + footer() + '<div id="live-status" class="sr-only" role="status" aria-live="polite"></div>';
+  app.querySelector<HTMLElement>('#main')!.tabIndex = -1;
   if (sourcesOpen) app.querySelector<HTMLDetailsElement>('.source-details')!.open = true;
   if (restoreFocus) app.querySelector<HTMLElement>(restoreFocus)?.focus({ preventScroll: true });
   else if (focusId) document.getElementById(focusId)?.focus({ preventScroll: true });
@@ -192,6 +183,18 @@ async function loadConditions() {
   }
 }
 
+function focusDestination(scroll = true) {
+  let anchor: HTMLElement | null = null;
+  try { anchor = location.hash ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null; } catch { /* Ignore malformed fragments. */ }
+  const destination = anchor || document.getElementById('main');
+  destination?.setAttribute('tabindex', '-1');
+  destination?.focus({ preventScroll: true });
+  if (scroll) {
+    if (anchor) anchor.scrollIntoView();
+    else window.scrollTo(0, 0);
+  }
+}
+
 document.addEventListener('click', event => {
   const target = event.target as Element;
   const nav = target.closest<HTMLAnchorElement>('a[data-nav]');
@@ -199,20 +202,15 @@ document.addEventListener('click', event => {
     event.preventDefault();
     history.pushState({}, '', nav.getAttribute('href')!);
     render();
-    window.scrollTo(0, 0);
-    const main = document.querySelector<HTMLElement>('#main');
-    main?.setAttribute('tabindex', '-1');
-    main?.focus({ preventScroll: true });
+    focusDestination();
     if (currentPath() === WATER_PATH) void loadConditions();
   }
   const refresh = target.closest('#refresh');
   if (refresh) void loadConditions();
   const range = target.closest<HTMLButtonElement>('[data-hours]');
   if (range) { trendHours = Number(range.dataset.hours); render(`[data-hours="${trendHours}"]`); }
-  const filter = target.closest<HTMLButtonElement>('[data-filter]');
-  if (filter) { coverageFilter = filter.dataset.filter!; render(`[data-filter="${coverageFilter}"]`); }
 });
-window.addEventListener('popstate', () => { render(); if (currentPath() === WATER_PATH) void loadConditions(); });
+window.addEventListener('popstate', () => { render(); focusDestination(false); if (currentPath() === WATER_PATH) void loadConditions(); });
 document.addEventListener('visibilitychange', () => { if (!document.hidden && currentPath() === WATER_PATH) void loadConditions(); });
 window.setInterval(() => {
   if (document.hidden || currentPath() !== WATER_PATH || loading) return;
@@ -220,4 +218,5 @@ window.setInterval(() => {
   else render();
 }, 60 * 1000);
 render();
+if (location.hash) focusDestination();
 if (currentPath() === WATER_PATH) void loadConditions();

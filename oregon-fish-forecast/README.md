@@ -4,6 +4,10 @@ Milestone A: a local, mobile-first Lower Deschutes conditions page, a six-area c
 
 The site displays source observations and their limitations. Fishing outlooks, windows, and techniques remain withheld until reach, access, and regulation reviews are complete. The five additional waters are proposed coverage only.
 
+The homepage now follows the selected Conditions Field Guide design: the changing-weather fish brands the header and footer, a separate landscape illustration fills the hero, and the main action opens the existing Lower Deschutes conditions page. Proposed-water rows expand to explain their review status. The supplied Deschutes and Metolius photographs remain labeled as regional scenery.
+
+The selected reference is `../homepage-exploration/3-conditions-field-guide-landscape-v3.png`. Homepage layout lives in `src/home.ts` and `src/field-guide.css`; optimized brand assets and their generation prompts live in `public/brand/`. See [design-qa.md](./design-qa.md) for the visual comparison and checks. With the local server running, `npx tsx scripts/capture-field-guide.ts` reproduces desktop/mobile screenshots and the combined reference comparison in ignored `artifacts/field-guide/`.
+
 ## Run locally
 
 Requires Node.js 24 or newer and npm. From this directory:

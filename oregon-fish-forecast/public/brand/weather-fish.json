@@ -1,0 +1,7 @@
+{
+  "title": "Weather fish web asset",
+  "generator": "Built-in image generation",
+  "source": "../../../logo-exploration/confluence-weather/lake-billy-chinook-sun-eye-v4.png",
+  "asset": "weather-fish.png",
+  "prompt": "Prepare the supplied approved logo as a production web image asset. Extract ONLY the fish illustration, removing all OREGON FISH FORECAST lettering and all outside cream background. Transparent background with genuine alpha. Preserve the exact right-facing silhouette, blue outline, snow at left, rainy clouds at middle, clear warm sky on right, one yellow sun doubling as the eye at the head, evergreen lower landscape, and the cream Lake Billy Chinook-inspired branching negative-space lake. The branching channel within the fish should stay opaque cream #F5F2E9 as part of the brand mark; only the background outside the fish becomes transparent. No new design or simplification. No frame, paper rectangle, shadows or text. Output a tightly framed landscape PNG approximately 1200 x 580 with the fish taking 94% of the width, original silhouette proportions preserved. This is the supplied fish alone, for a website header."
+}

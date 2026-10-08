@@ -146,6 +146,12 @@ test('proposed waters expand with the keyboard and link to coverage review inste
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/\/methodology#coverage$/);
   await expect(page.getByRole('heading', { name: 'One reach at a time.' })).toBeVisible();
+  await expect(page.locator('#coverage')).toBeFocused();
+  await page.goBack();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Get to know the water.');
+  await page.goForward();
+  await expect(page).toHaveURL(/\/methodology#coverage$/);
+  await expect(page.locator('#coverage')).toBeFocused();
 });
 
 test('measured readings show units, original timestamps and provenance without inventing temperature', async ({ page }) => {
