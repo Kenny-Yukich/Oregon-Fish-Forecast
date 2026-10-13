@@ -1,10 +1,14 @@
 import type { OfficialAlert, Weather, WeatherPeriod } from '../shared/types';
+import { WATERS, type Gauge } from '../shared/waters';
 import { SourceCache, type Snapshot } from './cache';
 import { SourceClient, SourceError, numeric, object, safeUrl, timestamp, type Json } from './net';
 
 export interface WeatherPoint { latitude: number; longitude: number; label: string; status: 'reviewed' | 'gauge_smoke_test' }
-export const GAUGE_POINT: WeatherPoint = { latitude: 44.7259522504172, longitude: -121.246993886344,
-  label: 'USGS gauge location · development smoke test only', status: 'gauge_smoke_test' };
+/** A gauge's own coordinates, for local smoke tests only; never a reviewed reach weather point. */
+export function gaugePoint(gauge: Gauge): WeatherPoint {
+  return { latitude: gauge.latitude, longitude: gauge.longitude, label: `USGS ${gauge.label} location · development smoke test only`, status: 'gauge_smoke_test' };
+}
+export const GAUGE_POINT: WeatherPoint = gaugePoint(WATERS[0]!.gauge);
 export const NWS_URL = 'https://www.weather.gov/documentation/services-web-api';
 export const WEATHER_FRESH_MS = 6 * 3600_000;
 export const ALERT_FRESH_MS = 5 * 60_000;

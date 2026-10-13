@@ -1,8 +1,8 @@
 # Oregon Fish Forecast
 
-A local Central Oregon pilot for understanding river conditions, with source-linked observations, visible freshness, and clear limits. The current app includes a Lower Deschutes conditions page for the proposed Warm Springs–Trout Creek reach, a coverage homepage, and a methodology page.
+A local Oregon fishing guide with an illustrated homepage and a searchable table of 24 waters. Every row includes sourced species, access, seasonal context, dated reports, advisory links, and a source-review date. Five Central Oregon reaches also have gauge-backed conditions pages.
 
-Reach, access, and regulation reviews remain incomplete. Other waters are proposed coverage; fishing outlooks, suggested windows, and techniques remain withheld. This repository contains the app and design explorations; no homepage concept is implemented by adding these images, and no live deployment is represented here.
+Reach, current access, and comprehensive regulation reviews remain incomplete. Reports retain their original dates and geographic scope; source-review dates never replace observation dates. Directions use a visitor's starting town and a documented access destination; drive times are requested from Maps. This repository contains the app and design explorations; no live deployment is represented here.
 
 ## Homepage concepts
 

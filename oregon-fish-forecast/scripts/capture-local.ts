@@ -10,14 +10,20 @@ const checks: unknown[] = [];
 for (const [name, path, width] of [
   ['home-desktop', '/', 1440],
   ['home-mobile', '/', 375],
+  ['guide-desktop', '/waters/fall-river-above-falls', 1440],
+  ['guide-mobile', '/waters/fall-river-above-falls', 375],
   ['conditions-desktop', '/waters/lower-deschutes-warm-springs-trout-creek', 1440],
   ['conditions-mobile', '/waters/lower-deschutes-warm-springs-trout-creek', 375],
   ['methodology-mobile', '/methodology', 375],
 ] as const) {
   await page.setViewportSize({ width, height: 1000 });
   await page.goto(`http://127.0.0.1:8787${path}`);
-  if (path.startsWith('/waters/')) await page.getByRole('button', { name: 'Refresh conditions' }).waitFor({ timeout: 60_000 });
+  if (path === '/' || name.startsWith('conditions-')) {
+    await page.getByRole('button', { name: path === '/' ? 'Refresh' : 'Refresh conditions', exact: true }).waitFor({ timeout: 60_000 });
+  }
+  await page.evaluate(() => document.fonts.ready);
   await page.screenshot({ path: `artifacts/${name}.png`, fullPage: true });
+  if (path === '/') await page.screenshot({ path: `artifacts/${name}-top.png`, fullPage: false });
   checks.push({ name, ...await page.evaluate(() => ({
     viewport: innerWidth, document: document.documentElement.scrollWidth,
     title: document.title,

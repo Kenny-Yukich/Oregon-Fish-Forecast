@@ -107,7 +107,7 @@ TroutRoutes licensing; statewide access/property layers; fish passage/escapement
 
 The earlier sample 8.5/10 forecast in the conversation was illustrative, not an actual forecast. It must not enter the app as a real observation or training label.
 
-**Initial public product:** measured conditions, forecast weather, dated fishing context, and an explained planning outlook. Do not launch a numeric bite score by selecting arbitrary weights that merely sum to 100.
+**Initial public product:** measured conditions, forecast weather, dated fishing context, and an explained planning outlook. 
 
 **Later optional index:** a transparent, versioned heuristic for a specific water/reach, target species, method, and date. Label it experimental until evaluated against real outcomes. An 8/10 would mean a relative index, never an 80% catch probability.
 
@@ -234,3 +234,5 @@ Identifiers match `sources.json`. Official pages can change; recheck before impl
 [S13] Cloudflare Cron Triggers: https://developers.cloudflare.com/workers/configuration/cron-triggers/  
 [S14] Cloudflare custom domains: https://developers.cloudflare.com/workers/configuration/routing/custom-domains/  
 [S15] USGS latest-continuous fields: https://api.waterdata.usgs.gov/ogcapi/v1/collections/latest-continuous/queryables?f=html
+
+On the website, I’d initially display just **water name, target species, drive time, access, seasonal outlook, current conditions, alerts, and last verified**. Selecting a water would open the full details. Behind that screen, waters, access points, species, reports, and measurements should be linked records so each can update independently.
