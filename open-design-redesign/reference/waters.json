@@ -1,0 +1,1766 @@
+{
+  "brand": "Oregon Fish Forecast",
+  "defaultOrigin": "Portland, Oregon",
+  "generatedFor": "Separate Open Design comparison, October 13, 2026",
+  "dataNote": "Editorial records were checked October 12, 2026. No live measurements are included. Missing readings must remain unavailable.",
+  "waters": [
+    {
+      "id": "lower-deschutes-warm-springs-trout-creek",
+      "name": "Lower Deschutes",
+      "reach": "Warm Springs to Trout Creek",
+      "kind": "river",
+      "region": "Central Oregon",
+      "gauge": {
+        "station_id": "USGS-14092500",
+        "label": "Madras gauge",
+        "url": "https://waterdata.usgs.gov/monitoring-location/USGS-14092500/"
+      },
+      "planning": {
+        "water_id": "lower-deschutes-warm-springs-trout-creek",
+        "target_species": [
+          "Redband trout",
+          "Mountain whitefish"
+        ],
+        "access_summary": "Trout Creek: bank, trail, boat ramp",
+        "access_detail": "BLM lists day-use parking, a boat launch and an upriver trail at Trout Creek Campground. The approach includes gravel and a narrow tunnel; bring water. This is a public destination on the reach, not directions to the Madras gauge.",
+        "access_point": {
+          "label": "Trout Creek Campground",
+          "map_query": "BLM Trout Creek Campground Deschutes River Madras Oregon"
+        },
+        "seasonal_summary": "Trout focus; check migratory-fish closures",
+        "seasonal_detail": "Resident redband trout are a core lower-river fishery. Treat seasonal steelhead descriptions as historical run context: current species restrictions take precedence.",
+        "methods": "ODFW reports stonefly nymphs and evening dry flies for trout; check exact tackle rules.",
+        "report": {
+          "summary": "ODFW reports good trout fishing.",
+          "reported_on": "2026-10-05",
+          "checked_on": "2026-10-12",
+          "coverage": "Mouth-to-Pelton report; not a Trout Creek catch survey.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Aug 15-Dec 31, 2026: steelhead and coho angling/retention closed from Sherars Falls to Pelton Reregulating Reservoir. Review Chinook rules separately.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://myodfw.com/articles/regulation-updates"
+          },
+          {
+            "summary": "Boater permits, land boundaries and current trail/fire restrictions need a trip-day check.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.blm.gov/visit/trout-creek-campground"
+          }
+        ],
+        "score_notice": "ODFW reports steelhead and salmon restrictions for this reach; the fishing score is withheld pending a rules review.",
+        "score_notice_effective_at": "2026-08-15T00:00:00-07:00",
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW lower Deschutes report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "label": "ODFW in-season restrictions",
+            "url": "https://myodfw.com/articles/regulation-updates"
+          },
+          {
+            "label": "BLM Trout Creek destination",
+            "url": "https://www.blm.gov/visit/trout-creek-campground"
+          },
+          {
+            "label": "ODFW Central Zone fishery background",
+            "url": "https://myodfw.com/fishing/central-zone"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "lower-deschutes-moody",
+      "name": "Lower Deschutes",
+      "reach": "Lower river near the mouth",
+      "kind": "river",
+      "region": "Central Oregon",
+      "gauge": {
+        "station_id": "USGS-14103000",
+        "label": "Moody gauge",
+        "url": "https://waterdata.usgs.gov/monitoring-location/USGS-14103000/"
+      },
+      "planning": {
+        "water_id": "lower-deschutes-moody",
+        "target_species": [
+          "Redband trout",
+          "Mountain whitefish"
+        ],
+        "access_summary": "State park: bank and riverside trails",
+        "access_detail": "Deschutes River State Recreation Area provides a public starting point at the river mouth. Its Blackberry Trail follows the east bank; Heritage Landing is the separate boat launch across the river. The station itself is not the access destination.",
+        "access_point": {
+          "label": "Deschutes River State Recreation Area",
+          "map_query": "Deschutes River State Recreation Area 89600 Biggs Rufus Highway Oregon"
+        },
+        "seasonal_summary": "Trout focus; salmon/steelhead restriction",
+        "seasonal_detail": "ODFW describes resident redband trout and a historical summer/fall steelhead run in the lower Deschutes. Run timing does not establish an open fishery; this mouth-area row has a current restriction.",
+        "methods": "ODFW reports stonefly nymphs for trout. Use permitted bank locations and verify tackle rules.",
+        "report": {
+          "summary": "ODFW reports good trout fishing.",
+          "reported_on": "2026-10-05",
+          "checked_on": "2026-10-12",
+          "coverage": "Mouth-to-Pelton report; not a Moody-area catch survey.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Aug 15-Dec 31, 2026: salmon/steelhead angling and retention closed from the westbound I-84 bridge to the trestle three miles below Sherars Falls.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://myodfw.com/articles/regulation-updates"
+          },
+          {
+            "summary": "Confirm river-use permits and park notices before boating or taking the longer canyon trail.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=29"
+          }
+        ],
+        "score_notice": "ODFW reports steelhead and salmon restrictions for this reach; the fishing score is withheld pending a rules review.",
+        "score_notice_effective_at": "2026-08-15T00:00:00-07:00",
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW lower Deschutes report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "label": "ODFW in-season restrictions",
+            "url": "https://myodfw.com/articles/regulation-updates"
+          },
+          {
+            "label": "Oregon State Parks: Deschutes River",
+            "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=29"
+          },
+          {
+            "label": "ODFW Central Zone background",
+            "url": "https://myodfw.com/fishing/central-zone"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "middle-deschutes-culver",
+      "name": "Middle Deschutes",
+      "reach": "Above Lake Billy Chinook",
+      "kind": "river",
+      "region": "Central Oregon",
+      "gauge": {
+        "station_id": "USGS-14076500",
+        "label": "Culver gauge",
+        "url": "https://waterdata.usgs.gov/monitoring-location/USGS-14076500/"
+      },
+      "planning": {
+        "water_id": "middle-deschutes-culver",
+        "target_species": [
+          "Redband trout",
+          "Brown trout",
+          "Mountain whitefish"
+        ],
+        "access_summary": "Steelhead Falls: hike to river upstream",
+        "access_detail": "BLM describes a roughly half-mile trail from Steelhead Falls Trailhead to the falls, with a short steep section and no drinking water. This middle-river destination is upstream of the Culver station; it does not establish parking or shoreline access at the gauge.",
+        "access_point": {
+          "label": "Steelhead Falls Trailhead",
+          "map_query": "BLM Steelhead Falls Trailhead River Road Terrebonne Oregon"
+        },
+        "seasonal_summary": "Cooler-season trout pattern",
+        "seasonal_detail": "ODFW general trout guidance favors spring and fall in moving water. That is species-level context, not a measured seasonal advantage for this canyon or a prediction of conditions at the falls.",
+        "methods": "General trout approach: examine current breaks behind rocks and deeper pools; use legal flies or lures suited to that water.",
+        "report": {
+          "summary": "ODFW reported productive trout fishing near Steelhead Falls.",
+          "reported_on": "2026-07-30",
+          "checked_on": "2026-10-12",
+          "coverage": "Broader middle Deschutes; older than the live Culver readings.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Exact fishing boundaries, trail condition and fire restrictions are not fully reviewed for this trip.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://myodfw.com/articles/regulation-updates"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW middle Deschutes report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "label": "BLM Steelhead Falls trail brochure",
+            "url": "https://www.blm.gov/sites/default/files/documents/files/Steelhead_Falls_brochure.pdf"
+          },
+          {
+            "label": "ODFW general trout methods",
+            "url": "https://myodfw.com/articles/how-fish-trout"
+          },
+          {
+            "label": "ODFW Central Zone guide",
+            "url": "https://myodfw.com/articles/easy-angling-central-zone"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "crooked-river-opal-springs",
+      "name": "Crooked River",
+      "reach": "Lower canyon below Opal Springs",
+      "kind": "river",
+      "region": "Central Oregon",
+      "gauge": {
+        "station_id": "USGS-14087400",
+        "label": "Opal Springs gauge",
+        "url": "https://waterdata.usgs.gov/monitoring-location/USGS-14087400/"
+      },
+      "planning": {
+        "water_id": "crooked-river-opal-springs",
+        "target_species": [
+          "Redband trout (basin evidence)",
+          "Mountain whitefish (basin evidence)"
+        ],
+        "access_summary": "Public route not established",
+        "access_detail": "The monitoring station and hydro project do not establish a public fishing entrance, parking permission or an easement. No suitable public destination for the canyon below Opal Springs was verified in this review; do not route to the gauge.",
+        "access_point": null,
+        "seasonal_summary": "Lower-canyon timing unconfirmed",
+        "seasonal_detail": "ODFW fish-passage material documents native fish connectivity in the Crooked basin and bull trout below the project. This is habitat evidence, not a catch-rate record or a basis for importing the Bowman Dam seasonal outlook.",
+        "methods": "A reach-specific fishing method is not established. First resolve a legal public access location and exact section rules; then assess the actual bank, current and habitat.",
+        "report": {
+          "summary": "No dated fishing report specific to the canyon below Opal Springs was found.",
+          "reported_on": null,
+          "checked_on": "2026-10-12",
+          "coverage": "ODFW passage evidence; the Bowman Dam fishing report does not assess this canyon.",
+          "url": "https://www.dfw.state.or.us/fish/passage/project_highlights.asp"
+        },
+        "alerts": [
+          {
+            "summary": "Public access and exact reach rules remain unresolved; a live flow reading does not establish permission to fish.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://myodfw.com/articles/regulation-updates"
+          },
+          {
+            "summary": "ODFW documents bull trout below the hydro project; species identification and current protections matter here.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.dfw.state.or.us/fish/passage/project_highlights.asp"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW Opal Springs fish-passage evidence",
+            "url": "https://www.dfw.state.or.us/fish/passage/project_highlights.asp"
+          },
+          {
+            "label": "ODFW current restriction updates",
+            "url": "https://myodfw.com/articles/regulation-updates"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "metolius-river-grandview",
+      "name": "Metolius River",
+      "reach": "Lower river near Grandview",
+      "kind": "river",
+      "region": "Central Oregon",
+      "gauge": {
+        "station_id": "USGS-14091500",
+        "label": "Grandview gauge",
+        "url": "https://waterdata.usgs.gov/monitoring-location/USGS-14091500/"
+      },
+      "planning": {
+        "water_id": "metolius-river-grandview",
+        "target_species": [
+          "Redband trout",
+          "Mountain whitefish",
+          "Bull trout"
+        ],
+        "access_summary": "Grandview public route unconfirmed",
+        "access_detail": "No verified public trailhead or launch serving the lower river near the Grandview gauge was established. Camp Sherman and Wizard Falls descriptions concern a different section and are not substituted as access to this row.",
+        "access_point": null,
+        "seasonal_summary": "River-wide fall hatches; local gap",
+        "seasonal_detail": "The broader Metolius fishery has resident trout and a winter bull-trout fishery in ODFW background material. There is no Grandview-specific seasonal assessment, route inspection or abundance estimate in this record.",
+        "methods": "Broader-river guidance mentions stonefly and midge nymphs. A Grandview-specific presentation or depth is unverified.",
+        "report": {
+          "summary": "ODFW reports trout fishing and spawning activity.",
+          "reported_on": "2026-09-03",
+          "checked_on": "2026-10-12",
+          "coverage": "Whole-river context, not a Grandview observation.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Avoid spawning fish and redds; ODFW flags Metolius spawning activity.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "summary": "Confirm lower-river public access and precise section/tribal boundaries before choosing a route.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://myodfw.com/articles/regulation-updates"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW Metolius report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "label": "ODFW Central Zone background",
+            "url": "https://myodfw.com/fishing/central-zone"
+          },
+          {
+            "label": "ODFW section-rule updates",
+            "url": "https://myodfw.com/articles/regulation-updates"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "crooked-river-bowman-dam",
+      "name": "Crooked River",
+      "reach": "Bowman Dam to Castle Rock Campground",
+      "kind": "river",
+      "region": "Central Oregon",
+      "description": "A Central Oregon trout reach downstream of Bowman Dam.",
+      "sources": [
+        {
+          "label": "ODFW: fishing near Bend",
+          "url": "https://myodfw.com/articles/50-places-go-fishing-within-90-minutes-bend"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "crooked-river-bowman-dam",
+        "target_species": [
+          "Redband trout",
+          "Mountain whitefish"
+        ],
+        "access_summary": "Castle Rock: bank access from campground",
+        "access_detail": "BLM identifies Castle Rock Campground on Highway 27 south of Prineville as a Crooked River access site. It provides an evidenced starting point at the lower end of this Bowman-to-Castle Rock row; verify individual pullouts before parking elsewhere.",
+        "access_point": {
+          "label": "Castle Rock Campground",
+          "map_query": "BLM Castle Rock Campground Crooked River Highway 27 Prineville Oregon"
+        },
+        "seasonal_summary": "September to mid-May guide window",
+        "seasonal_detail": "ODFW guide timing favors September through mid-May below Bowman. The naturally colored water is not automatically poor fishing; slippery footing deserves a separate on-site assessment.",
+        "methods": "Small midge, scud and mayfly nymphs feature in ODFW guidance; watch for rising fish.",
+        "report": {
+          "summary": "ODFW reports strong trout/whitefish fishing and reduced autumn flows.",
+          "reported_on": "2026-10-08",
+          "checked_on": "2026-10-12",
+          "coverage": "Bowman tailwater; not the Opal Springs canyon.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Autumn storage reduces tailwater flow; assess current conditions before entering the river.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "summary": "Current wading depth, footing and each roadside access point remain unassessed.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.blm.gov/visit/castle-rock-campground"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW Crooked River report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "label": "ODFW tailwater seasonal guide",
+            "url": "https://myodfw.com/articles/easy-angling-central-zone"
+          },
+          {
+            "label": "BLM Castle Rock access",
+            "url": "https://www.blm.gov/visit/castle-rock-campground"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "fall-river-above-falls",
+      "name": "Fall River",
+      "reach": "Hatchery area above the falls",
+      "kind": "river",
+      "region": "Central Oregon",
+      "description": "A clear-water trout stream near Sunriver and the Fall River Hatchery.",
+      "sources": [
+        {
+          "label": "ODFW: fishing near Bend",
+          "url": "https://myodfw.com/articles/50-places-go-fishing-within-90-minutes-bend"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "fall-river-above-falls",
+        "target_species": [
+          "Rainbow trout",
+          "Brown trout"
+        ],
+        "access_summary": "Hatchery: bank and foot-trail fishing",
+        "access_detail": "Fall River Hatchery at 15055 S. Century Drive is an official fishing destination. ODFW describes bank access without requiring wading. Use the hatchery-side river access, respecting posted operating areas and visitor hours.",
+        "access_point": {
+          "label": "Fall River Hatchery",
+          "map_query": "Fall River Hatchery 15055 South Century Drive Bend Oregon"
+        },
+        "seasonal_summary": "June-July evenings in ODFW guide",
+        "seasonal_detail": "The guide highlights late-day summer fishing around the hatchery. Seasonal stocking background is not confirmation of a new release today.",
+        "methods": "Dry flies and nymphs are the guide starting points; choose flies based on insects observed at the water.",
+        "report": {
+          "summary": "ODFW reports consistent fly fishing.",
+          "reported_on": "2026-10-01",
+          "checked_on": "2026-10-12",
+          "coverage": "Fall River; this profile covers the hatchery area above the falls.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Barbless flies only. The below-falls seasonal closure concerns a different section.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW Fall River report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "label": "ODFW Fall River guide",
+            "url": "https://myodfw.com/articles/easy-angling-central-zone"
+          },
+          {
+            "label": "ODFW hatchery location and visitor information",
+            "url": "https://myodfw.com/fall-river-hatchery-visitors-guide"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "haystack-reservoir",
+      "name": "Haystack Reservoir",
+      "reach": "West Shore Day Use Area",
+      "kind": "reservoir",
+      "region": "Central Oregon",
+      "description": "A small reservoir near Culver with trout and warmwater species.",
+      "sources": [
+        {
+          "label": "ODFW: fishing near Bend",
+          "url": "https://myodfw.com/articles/50-places-go-fishing-within-90-minutes-bend"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "haystack-reservoir",
+        "target_species": [
+          "Rainbow trout",
+          "Smallmouth bass",
+          "Largemouth bass",
+          "Black crappie"
+        ],
+        "access_summary": "West Shore: bank, ramp and day use",
+        "access_detail": "Crook County Parks identifies the West Shore day-use area, boat ramp, boarding floats and trailer parking at 9900 SW Haystack Drive. Irrigation changes the lake level; a listed ramp does not guarantee enough water for a particular boat.",
+        "access_point": {
+          "label": "Haystack West Shore Day Use",
+          "map_query": "Haystack West Shore Day Use 9900 SW Haystack Drive Culver Oregon"
+        },
+        "seasonal_summary": "Cooler-water trout; fluctuating shoreline",
+        "seasonal_detail": "General ODFW guidance for trout in lakes favors cooler spring/fall water and deeper summer habitat. This is a species pattern, not a measured temperature or Haystack-specific catch forecast.",
+        "methods": "General trout methods include a retrieved spinner or suspended bait where permitted. Match depth to conditions; no current productive depth is documented for West Shore.",
+        "report": {
+          "summary": "ODFW confirms spring stocking; no newer water-specific update.",
+          "reported_on": "2026-07-06",
+          "checked_on": "2026-10-12",
+          "coverage": "Reservoir-wide; not a recent West Shore catch report.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Park operator noted algae buildup on July 16, 2026; this older notice does not describe conditions today.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.ccprd.org/haystack-reservoir"
+          },
+          {
+            "summary": "West ramp usability depends on reservoir level; check the operator before trailering a boat.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.oregon.gov/osmb/boater-info/Pages/Opportunities-and-Access.aspx"
+          },
+          {
+            "summary": "Statewide OHA mercury advice applies to bass; review meal guidance before keeping fish.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.oregon.gov/oha/PH/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW Haystack report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "label": "Crook County Parks: Haystack",
+            "url": "https://www.ccprd.org/haystack-reservoir"
+          },
+          {
+            "label": "Oregon Marine Board access report",
+            "url": "https://www.oregon.gov/osmb/boater-info/Pages/Opportunities-and-Access.aspx"
+          },
+          {
+            "label": "ODFW general trout methods",
+            "url": "https://myodfw.com/articles/how-fish-trout"
+          },
+          {
+            "label": "ODFW Bend guide species",
+            "url": "https://myodfw.com/articles/50-places-go-fishing-within-90-minutes-bend"
+          },
+          {
+            "label": "OHA consumption guidance",
+            "url": "https://www.oregon.gov/oha/PH/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "lake-billy-chinook-crooked-arm",
+      "name": "Lake Billy Chinook",
+      "reach": "Crooked River arm at Cove Palisades",
+      "kind": "reservoir",
+      "region": "Central Oregon",
+      "description": "Cove Palisades provides a starting point for this canyon reservoir.",
+      "sources": [
+        {
+          "label": "ODFW: fishing near Bend",
+          "url": "https://myodfw.com/articles/50-places-go-fishing-within-90-minutes-bend"
+        },
+        {
+          "label": "Oregon State Parks: Cove Palisades",
+          "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=24"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "lake-billy-chinook-crooked-arm",
+        "target_species": [
+          "Kokanee",
+          "Rainbow trout",
+          "Smallmouth bass"
+        ],
+        "access_summary": "Crooked River day use: ramp and kayak launch",
+        "access_detail": "Cove Palisades identifies a boat ramp and accessible kayak launch at Crooked River Day-use Area. Drive to day use rather than assuming the campground is on the shoreline; the connecting road is steep. Winter low water can affect ramps.",
+        "access_point": {
+          "label": "Crooked River Day-use Area",
+          "map_query": "Crooked River Day Use Area Cove Palisades State Park Culver Oregon"
+        },
+        "seasonal_summary": "Kokanee: general April-August pattern",
+        "seasonal_detail": "ODFW kokanee guidance highlights April-August effort and movement to spawning habitat in fall. This general pattern does not locate fish in the Crooked arm or predict a productive depth.",
+        "methods": "For kokanee, search for schools from a boat and troll or jig at their depth. Bank plans should focus on documented shoreline species rather than assume kokanee are within casting range.",
+        "report": {
+          "summary": "ODFW reports lake-wide kokanee catches; Crooked-arm success is unconfirmed.",
+          "reported_on": "2026-09-24",
+          "checked_on": "2026-10-12",
+          "coverage": "Lake-wide and Metolius-arm information; not a Crooked-arm sample.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Statewide OHA mercury advice applies to bass; review meal guidance before keeping fish.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.oregon.gov/oha/PH/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx"
+          },
+          {
+            "summary": "OHA downgraded a bloom advisory on June 29, 2026; consult the current map for the latest status, especially for pets.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.oregon.gov/oha/ERD/Pages/Recreational-use-advisory-downgraded-to-precaution-for-Lake-Billy-Chinook-06.29.2026.aspx"
+          },
+          {
+            "summary": "Sep 28 park notice closes some camp loops and Lower Deschutes day use; those are separate from this Crooked River day-use destination.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=24"
+          },
+          {
+            "summary": "Current bloom extent and exact Crooked-arm fishing rules still need a trip-day review.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/RECREATION/HARMFULALGAEBLOOMS/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW Lake Billy Chinook report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "label": "Cove Palisades access and notices",
+            "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=24"
+          },
+          {
+            "label": "ODFW kokanee techniques",
+            "url": "https://myodfw.com/articles/kokanee-fishing-oregon"
+          },
+          {
+            "label": "ODFW lake species guide",
+            "url": "https://myodfw.com/articles/50-places-go-fishing-within-90-minutes-bend"
+          },
+          {
+            "label": "OHA current bloom advisories",
+            "url": "https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/RECREATION/HARMFULALGAEBLOOMS/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          },
+          {
+            "label": "OHA consumption guidance",
+            "url": "https://www.oregon.gov/oha/PH/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "columbia-river-chinook-landing",
+      "name": "Columbia River",
+      "reach": "Chinook Landing area, Fairview",
+      "kind": "river",
+      "region": "Columbia River",
+      "description": "A Portland-area starting point for Columbia River fisheries.",
+      "sources": [
+        {
+          "label": "ODFW: fishing near Portland",
+          "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-portland"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "columbia-river-chinook-landing",
+        "target_species": [
+          "Coho salmon",
+          "Chinook salmon",
+          "Steelhead",
+          "Sturgeon",
+          "Walleye"
+        ],
+        "access_summary": "Public launch; accessible docks",
+        "access_detail": "Chinook Landing Marine Park in Fairview has six launch lanes, paved parking and restrooms. Metro lists a parking fee. Check ramp operations before towing a boat; a launch is not a verified bank-fishing spot.",
+        "access_point": {
+          "label": "Chinook Landing Marine Park",
+          "map_query": "Chinook Landing Marine Park 5201 NE 223rd Avenue Fairview Oregon"
+        },
+        "seasonal_summary": "Salmon runs vary by season",
+        "seasonal_detail": "Spring Chinook and autumn salmon are distinct planning windows. Run timing and in-season decisions matter more than a fixed best-month label; confirm the fishery and reach before choosing a trip.",
+        "methods": "ODFW describes trolling flashers and bait or fishing lures from an anchored boat for spring Chinook. This is general technique background, not a current gear or retention authorization.",
+        "report": {
+          "summary": "Troutdale-area checks recorded coho catches and Chinook releases; no lower-river walleye or sturgeon report.",
+          "reported_on": "2026-10-08",
+          "checked_on": "2026-10-12",
+          "coverage": "ODFW Troutdale reporting area, broader than Chinook Landing; catch checks are not measurements at the launch.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/columbia-zone"
+        },
+        "alerts": [
+          {
+            "summary": "OHA consumption guidance applies to lower Columbia sturgeon. Read the advisory before planning to eat a catch; retention permission is separate.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx"
+          },
+          {
+            "summary": "Local bloom conditions are unverified. Check current notices; an absent advisory does not establish safety.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW: Portland fishing access",
+            "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-portland"
+          },
+          {
+            "label": "Metro: Chinook Landing",
+            "url": "https://www.oregonmetro.gov/places/chinook-landing-marine-park"
+          },
+          {
+            "label": "ODFW: columbia fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/columbia-zone"
+          },
+          {
+            "label": "ODFW: spring Chinook techniques",
+            "url": "https://myodfw.com/articles/columbia-spring-chinook-game"
+          },
+          {
+            "label": "OHA: fish consumption advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "rogue-river-touvelle",
+      "name": "Rogue River",
+      "reach": "TouVelle State Recreation Site area",
+      "kind": "river",
+      "region": "Southwest Oregon",
+      "description": "An upper Rogue fishing area near Central Point and Denman Wildlife Area.",
+      "sources": [
+        {
+          "label": "ODFW: fishing near Medford",
+          "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-medford"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "rogue-river-touvelle",
+        "target_species": [
+          "Steelhead",
+          "Chinook salmon",
+          "Trout"
+        ],
+        "access_summary": "Park bank access + boat ramp",
+        "access_detail": "Use TouVelle State Recreation Site at Table Rock Road. The boat ramp is across the bridge from the main picnic area; both sides have facilities. State Parks identifies swift currents and submerged obstructions. Parking permit required.",
+        "access_point": {
+          "label": "TouVelle State Recreation Site",
+          "map_query": "TouVelle State Recreation Site Table Rock Road Central Point Oregon"
+        },
+        "seasonal_summary": "Winter and summer-run steelhead",
+        "seasonal_detail": "Winter and early spring bring winter steelhead; summer-run fish follow later. These are basin-wide patterns, not a TouVelle catch forecast.",
+        "methods": "Swing flies or drift nymphs for steelhead, subject to current upper Rogue seasonal gear rules.",
+        "report": {
+          "summary": "Upper Rogue update records steelhead and Chinook activity. Hatchery returns and reservoir-release readings are upstream context, not TouVelle observations.",
+          "reported_on": "2026-10-06",
+          "checked_on": "2026-10-12",
+          "coverage": "Upper Rogue region; no TouVelle-only catch rate, temperature or flow was provided.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/southwest-zone"
+        },
+        "alerts": [
+          {
+            "summary": "TouVelle conditions and temporary park notices are unverified. Recheck park access before traveling.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=72"
+          },
+          {
+            "summary": "Upper Rogue seasonal gear restrictions need an exact-section review.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://myodfw.com/recreation-report/fishing-report/southwest-zone"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "State Parks: TouVelle",
+            "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=72"
+          },
+          {
+            "label": "ODFW: Medford fishing access",
+            "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-medford"
+          },
+          {
+            "label": "ODFW: steelhead timing and methods",
+            "url": "https://myodfw.com/articles/how-fish-steelhead"
+          },
+          {
+            "label": "ODFW: southwest fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/southwest-zone"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "umpqua-river-elkton",
+      "name": "Umpqua River",
+      "reach": "Mainstem at Alfred S. Tyson Park, Elkton",
+      "kind": "river",
+      "region": "Southwest Oregon",
+      "description": "A mainstem Umpqua location with both warmwater fish and migratory salmonids in ODFW’s guide.",
+      "sources": [
+        {
+          "label": "ODFW: fishing near Roseburg",
+          "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-roseburg"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "umpqua-river-elkton",
+        "target_species": [
+          "Smallmouth bass",
+          "Shad",
+          "Salmon",
+          "Steelhead"
+        ],
+        "access_summary": "Elkton bank access + ramp",
+        "access_detail": "ODFW lists a boat ramp and bank fishing at Alfred S. Tyson Park beside the RV park in Elkton. Navigate to the public ramp via River Road. Current ramp usability and shoreline footing have not been inspected.",
+        "access_point": {
+          "label": "Alfred S. Tyson Park / Elkton Boat Ramp",
+          "map_query": "Alfred S Tyson Park Elkton Boat Ramp River Road Elkton Oregon"
+        },
+        "seasonal_summary": "Warmwater bass; seasonal migrants",
+        "seasonal_detail": "Smallmouth provide a resident fishery alongside migratory salmon, steelhead and shad. ODFW identifies the lower Umpqua as a bass destination; recent mainstem reporting is useful context but does not establish a bite at Elkton.",
+        "methods": "For smallmouth, work small fish or crayfish imitations with spinning tackle: jigs and spinners are ODFW starting points. Seasonal salmon methods and rules require a separate check.",
+        "report": {
+          "summary": "Mainstem bass fishing was fair. Salmon catches described near Reedsport are downstream of this Elkton profile.",
+          "reported_on": "2026-10-07",
+          "checked_on": "2026-10-12",
+          "coverage": "Mainstem Umpqua; the salmon observations are at Reedsport, not Alfred S. Tyson Park.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/southwest-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Permanent cyanobacteria recreational advisory includes the mainstem past Elkton to Sawyers Rapids. Shoreline bedrock pools can contain harmful blooms.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          },
+          {
+            "summary": "OHA statewide mercury advisory applies to bass. Review species-specific consumption guidance before keeping fish.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW: Roseburg fishing access",
+            "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-roseburg"
+          },
+          {
+            "label": "ODFW: southwest warmwater fishing",
+            "url": "https://myodfw.com/articles/warmwater-fishing-southwest-oregon"
+          },
+          {
+            "label": "ODFW: southwest fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/southwest-zone"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          },
+          {
+            "label": "OHA: fish consumption advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "mckenzie-river-leaburg",
+      "name": "McKenzie River",
+      "reach": "Leaburg Landing below Leaburg Dam",
+      "kind": "river",
+      "region": "Willamette Valley",
+      "description": "A middle McKenzie access area downstream of Leaburg Dam.",
+      "sources": [
+        {
+          "label": "ODFW: fishing in Lane County",
+          "url": "https://myodfw.com/articles/65-places-go-fishing-lane-county"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "mckenzie-river-leaburg",
+        "target_species": [
+          "Rainbow trout",
+          "Steelhead",
+          "Chinook salmon"
+        ],
+        "access_summary": "Launch + limited bank access",
+        "access_detail": "Leaburg Landing is on the McKenzie below Leaburg Dam, not Leaburg Lake. ODFW describes a launch, restrooms and some bank access. Check the exact dam, fish-screen and powerhouse boundaries before fishing.",
+        "access_point": {
+          "label": "Leaburg Landing",
+          "map_query": "Leaburg Landing McKenzie River Oregon"
+        },
+        "seasonal_summary": "Trout; summer-run steelhead",
+        "seasonal_detail": "ODFW places McKenzie summer steelhead broadly in May-November. Hatchery trout releases provide additional context, without guaranteeing fish at this landing.",
+        "methods": "Swing flies or drift an indicator nymph for steelhead. Check seasonal gear restrictions before selecting tackle.",
+        "report": {
+          "summary": "Below-Leaburg trout stocking ended in the week of Sept. 1, per ODFW.",
+          "reported_on": "2026-09-15",
+          "checked_on": "2026-10-12",
+          "coverage": "Below Leaburg Lake; no landing-specific survey or measurement.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Reach access and temporary restrictions are unverified. Dam, fish-screen and powerhouse closures require an exact-boundary rules check.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://myodfw.com/fishing/regulations"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW: Lane County access guide",
+            "url": "https://myodfw.com/articles/65-places-go-fishing-lane-county"
+          },
+          {
+            "label": "ODFW: steelhead timing and methods",
+            "url": "https://myodfw.com/articles/how-fish-steelhead"
+          },
+          {
+            "label": "ODFW: willamette fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+          },
+          {
+            "label": "ODFW: 2026 regulations and reach boundaries",
+            "url": "https://myodfw.com/sites/default/files/2025-11/26_Fish_regs.pdf"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "willamette-river-cathedral-park",
+      "name": "Willamette River",
+      "reach": "Cathedral Park at St. Johns Bridge",
+      "kind": "river",
+      "region": "Portland area",
+      "description": "A lower Willamette fishing location in Portland.",
+      "sources": [
+        {
+          "label": "ODFW: fishing near Portland",
+          "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-portland"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "willamette-river-cathedral-park",
+        "target_species": [
+          "Salmon",
+          "Bass",
+          "Crappie",
+          "Sturgeon"
+        ],
+        "access_summary": "Park bank + designated fishing pier",
+        "access_detail": "Portland permits fishing from Cathedral Park riverbank and its upstream fishing/light-watercraft pier. This does not authorize fishing from every dock. The park also has a boat ramp; follow posted uses and parking rules.",
+        "access_point": {
+          "label": "Cathedral Park",
+          "map_query": "Cathedral Park North Edison Street and Pittsburg Avenue Portland Oregon"
+        },
+        "seasonal_summary": "Warmwater fish + salmon runs",
+        "seasonal_detail": "Resident bass and panfish offer a different trip from migratory salmon. ODFW identifies this park for both, but no park-specific best-month assessment was found; do not apply the above-Willamette-Falls coho outlook here.",
+        "methods": "For bass, ODFW describes jigs and prey-imitating lures around cover. Choose a presentation for the target species and check current lower-river rules; the linked health advisory is essential if keeping resident fish.",
+        "report": {
+          "summary": "No Cathedral Park-specific report found; latest narrative discusses upstream reaches.",
+          "reported_on": null,
+          "checked_on": "2026-10-12",
+          "coverage": "Broader river; no dated St. Johns Bridge observation.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Lower Willamette fish-consumption advisory applies here. OHA recommends not eating bass, carp or brown bullhead; review guidance for other resident fish.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/RECREATION/FISHCONSUMPTION/Pages/Lower-Willamette-Fish-Advisory.aspx"
+          },
+          {
+            "summary": "Local bloom conditions are unverified. Check current notices; an absent advisory does not establish safety.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW: Portland fishing access",
+            "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-portland"
+          },
+          {
+            "label": "Portland Parks: permitted fishing locations",
+            "url": "https://www.portland.gov/parks/fishing-portland-parks"
+          },
+          {
+            "label": "ODFW: bass methods",
+            "url": "https://myodfw.com/articles/all-about-bass"
+          },
+          {
+            "label": "ODFW: willamette fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+          },
+          {
+            "label": "OHA: Lower Willamette fish advisory",
+            "url": "https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/RECREATION/FISHCONSUMPTION/Pages/Lower-Willamette-Fish-Advisory.aspx"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "clackamas-river-barton-carver",
+      "name": "Clackamas River",
+      "reach": "Barton Park to Carver Park",
+      "kind": "river",
+      "region": "Portland area",
+      "description": "A lower-river section served by two county parks.",
+      "sources": [
+        {
+          "label": "ODFW: fishing near Portland",
+          "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-portland"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "clackamas-river-barton-carver",
+        "target_species": [
+          "Coho salmon",
+          "Steelhead",
+          "Chinook salmon",
+          "Trout"
+        ],
+        "access_summary": "Two parks with banks + ramps",
+        "access_detail": "Barton and Carver parks are public access anchors for this reach. Barton has bank access, a ramp and restrooms; Carver has a ramp near Clear Creek. A mapped park pair does not establish a safe float route or continuous public shoreline.",
+        "access_point": {
+          "label": "Carver Park boat ramp",
+          "map_query": "Carver Park boat ramp Clackamas Oregon"
+        },
+        "seasonal_summary": "Fall coho; winter steelhead",
+        "seasonal_detail": "ODFW identifies winter steelhead peaks around January and March, alongside summer-run fish. Autumn coho provide a separate target.",
+        "methods": "ODFW describes spinners, jigs, plugs and float presentations for coho; check gear rules.",
+        "report": {
+          "summary": "ODFW described good lower-river coho fishing.",
+          "reported_on": "2026-09-24",
+          "checked_on": "2026-10-12",
+          "coverage": "Lower Clackamas; no Barton-to-Carver survey.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Temporary park closures and river obstructions remain unverified; check notices before a float or bank trip.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.clackamas.us/parks/carver"
+          },
+          {
+            "summary": "Local bloom conditions are unverified. Check current notices; an absent advisory does not establish safety.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW: Portland fishing access",
+            "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-portland"
+          },
+          {
+            "label": "Clackamas County: Carver Park",
+            "url": "https://www.clackamas.us/parks/carver"
+          },
+          {
+            "label": "ODFW: steelhead timing and methods",
+            "url": "https://myodfw.com/articles/how-fish-steelhead"
+          },
+          {
+            "label": "ODFW: willamette fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "sandy-river-lewis-clark",
+      "name": "Sandy River",
+      "reach": "Lewis and Clark State Recreation Site to mouth",
+      "kind": "river",
+      "region": "Portland area",
+      "description": "The lower Sandy near its Columbia River confluence.",
+      "sources": [
+        {
+          "label": "ODFW: fishing near Portland",
+          "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-portland"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "sandy-river-lewis-clark",
+        "target_species": [
+          "Steelhead",
+          "Salmon"
+        ],
+        "access_summary": "Lower-river bank access + ramp",
+        "access_detail": "ODFW identifies Lewis and Clark State Recreation Site for access toward the Sandy mouth, with a ramp, picnic area and restrooms. Stay within posted public access; current ramp usability and wading conditions are unverified.",
+        "access_point": {
+          "label": "Lewis and Clark State Recreation Site",
+          "map_query": "Lewis and Clark State Recreation Site Sandy River Troutdale Oregon"
+        },
+        "seasonal_summary": "Winter steelhead; salmon runs",
+        "seasonal_detail": "ODFW identifies winter steelhead mainly December-April and summer-run fish May-August. These river-wide patterns are not opening dates or onsite observations.",
+        "methods": "Float a jig or swing a spinner for steelhead, subject to current lower Sandy gear and species rules.",
+        "report": {
+          "summary": "July report described summer-steelhead catches below the hatchery; no October update.",
+          "reported_on": "2026-07-27",
+          "checked_on": "2026-10-12",
+          "coverage": "Below hatchery; no recent mouth-area observation.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Local bloom conditions are unverified. Check current notices; an absent advisory does not establish safety.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW: Portland fishing access",
+            "url": "https://myodfw.com/articles/50-places-go-fishing-within-60-minutes-portland"
+          },
+          {
+            "label": "ODFW: steelhead timing and methods",
+            "url": "https://myodfw.com/articles/how-fish-steelhead"
+          },
+          {
+            "label": "ODFW: willamette fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "wilson-river-mills-bridge",
+      "name": "Wilson River",
+      "reach": "Mills Bridge area along Highway 6",
+      "kind": "river",
+      "region": "North coast",
+      "description": "A coastal river with migratory salmon, steelhead and resident trout fisheries.",
+      "sources": [
+        {
+          "label": "ODFW: Northwest Zone guide",
+          "url": "https://myodfw.com/articles/easy-angling-northwest-zone"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "wilson-river-mills-bridge",
+        "target_species": [
+          "Steelhead",
+          "Chinook salmon",
+          "Cutthroat trout"
+        ],
+        "access_summary": "Highway 6 bank-access location",
+        "access_detail": "ODFW lists bank access at Mills Bridge on Highway 6. Current parking, footing and neighboring land permissions are unverified.",
+        "access_point": {
+          "label": "Mills Bridge, Wilson River",
+          "map_query": "Mills Bridge Wilson River Highway 6 Tillamook Oregon"
+        },
+        "seasonal_summary": "Steelhead; spring/fall cutthroat",
+        "seasonal_detail": "Steelhead runs overlap; ODFW highlights spring/fall resident cutthroat and summer sea-run fish.",
+        "methods": "Work steelhead pools with spinners or floats; small spinners or flies suit cutthroat. Confirm seasonal gear rules.",
+        "report": {
+          "summary": "ODFW describes fall steelhead opportunity, with more fish upriver; Chinook remained concentrated nearer tidewater.",
+          "reported_on": "2026-09-30",
+          "checked_on": "2026-10-12",
+          "coverage": "Wilson River overall; not a Mills Bridge catch or conditions survey.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/northwest-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Local bloom conditions are unverified. Check current notices; an absent advisory does not establish safety.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW: Northwest fishing guide",
+            "url": "https://myodfw.com/articles/easy-angling-northwest-zone"
+          },
+          {
+            "label": "ODFW: northwest fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/northwest-zone"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "north-fork-nehalem-hatchery",
+      "name": "North Fork Nehalem River",
+      "reach": "North Nehalem Hatchery area",
+      "kind": "river",
+      "region": "North coast",
+      "description": "A popular steelhead destination centered on a small coastal stream and hatchery.",
+      "sources": [
+        {
+          "label": "ODFW: Northwest Zone guide",
+          "url": "https://myodfw.com/articles/easy-angling-northwest-zone"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "north-fork-nehalem-hatchery",
+        "target_species": [
+          "Winter steelhead"
+        ],
+        "access_summary": "Hatchery bank access",
+        "access_detail": "Hatchery bank access includes a platform for disabled-angling permit holders. Neighboring timberland permissions are unverified.",
+        "access_point": {
+          "label": "North Nehalem Fish Hatchery",
+          "map_query": "North Nehalem Fish Hatchery Highway 53 Oregon"
+        },
+        "seasonal_summary": "Winter peak: December-January",
+        "seasonal_detail": "ODFW highlights December-January within a December-April window. This is a popular bank fishery.",
+        "methods": "ODFW suggests drift presentations, spinners or a float and jig; check hatchery deadlines and gear restrictions.",
+        "report": {
+          "summary": "Combined Nehalem report focuses on bay salmon and basin cutthroat; no current hatchery-area winter-steelhead assessment.",
+          "reported_on": "2026-09-30",
+          "checked_on": "2026-10-12",
+          "coverage": "Combined Nehalem and North Fork report; bay salmon success is not evidence of fish at this hatchery reach.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/northwest-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Hatchery access notices and local conditions are unverified. Check posted fishing boundaries and accessible-platform permit requirements.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://myodfw.com/articles/easy-angling-northwest-zone"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW: Northwest fishing guide",
+            "url": "https://myodfw.com/articles/easy-angling-northwest-zone"
+          },
+          {
+            "label": "ODFW: northwest fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/northwest-zone"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "siletz-river-jack-morgan",
+      "name": "Siletz River",
+      "reach": "Jack Morgan Park area",
+      "kind": "river",
+      "region": "Central coast",
+      "description": "A coastal river destination reached from Highway 229.",
+      "sources": [
+        {
+          "label": "ODFW: Northwest Zone guide",
+          "url": "https://myodfw.com/articles/easy-angling-northwest-zone"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "siletz-river-jack-morgan",
+        "target_species": [
+          "Steelhead",
+          "Chinook salmon",
+          "Cutthroat trout"
+        ],
+        "access_summary": "Boat ramp; approach via Siletz",
+        "access_detail": "Jack Morgan Park at OR-229 mile 17.5 has a concrete ramp, vault toilets and picnic area west of the highway. Lincoln County directs access from the south through Siletz because the highway is blocked farther north.",
+        "access_point": {
+          "label": "A.W. Jack Morgan Park",
+          "map_query": "A W Jack Morgan Park Siletz Oregon"
+        },
+        "seasonal_summary": "Fall salmon depend on rain",
+        "seasonal_detail": "Fall rain helps Chinook move upstream from tidewater. Steelhead provide a longer seasonal window; sea-run cutthroat arrive in summer and early fall.",
+        "methods": "Spinners or float presentations are established salmon approaches; small spinners or streamers suit cutthroat. Check current section-specific rules.",
+        "report": {
+          "summary": "ODFW reports salmon success in bay/tidewater and slow summer-steelhead fishing; conditions at Jack Morgan were not separately reported.",
+          "reported_on": "2026-10-06",
+          "checked_on": "2026-10-12",
+          "coverage": "Siletz basin, with salmon observations downstream and steelhead discussion mainly upriver.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/northwest-zone"
+        },
+        "alerts": [
+          {
+            "summary": "OR-229 closed between mileposts 14-15 after a landslide. County says reach Jack Morgan Park from the south through Siletz; no local detour.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.co.lincoln.or.us/1065/AW-Jack-Morgan-Park"
+          },
+          {
+            "summary": "Local bloom conditions are unverified. Check current notices; an absent advisory does not establish safety.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "Lincoln County: Jack Morgan Park and road access",
+            "url": "https://www.co.lincoln.or.us/1065/AW-Jack-Morgan-Park"
+          },
+          {
+            "label": "ODFW: Northwest fishing guide",
+            "url": "https://myodfw.com/articles/easy-angling-northwest-zone"
+          },
+          {
+            "label": "ODFW: northwest fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/northwest-zone"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "diamond-lake",
+      "name": "Diamond Lake",
+      "reach": "Lake Creek and north-shore area",
+      "kind": "lake",
+      "region": "Southern Cascades",
+      "description": "A Cascade trout lake with an established rainbow fishery and predator trout introduced for invasive-fish control.",
+      "sources": [
+        {
+          "label": "ODFW: Diamond Lake fishery",
+          "url": "https://www.dfw.state.or.us/fish/local_fisheries/diamond_lake/index.asp"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "diamond-lake",
+        "target_species": [
+          "Rainbow trout",
+          "Brown trout",
+          "Tiger trout"
+        ],
+        "access_summary": "North launch; Lake Creek shore options",
+        "access_detail": "The Marine Board lists the North Lake boat launch, and ODFW identifies shore fishing near Lake Creek. The destination is the public north launch; it is not a promise of accessible shoreline all around the north end.",
+        "access_point": {
+          "label": "Diamond Lake North End Boat Ramp",
+          "map_query": "Diamond Lake North End Boat Ramp Oregon"
+        },
+        "seasonal_summary": "After ice-off and cooler autumn water",
+        "seasonal_detail": "ODFW background guidance highlights spring after ice-off and autumn cooling. Ice-off dates vary each year; this profile does not assess ice thickness or certify winter access.",
+        "methods": "ODFW describes trolling small lures and spinners, or fishing flies near Lake Creek. Shore and boat methods differ; no current north-end productive depth is recorded.",
+        "report": {
+          "summary": "ODFW reports good trout catches, with brown and tiger trout released.",
+          "reported_on": "2026-10-07",
+          "checked_on": "2026-10-12",
+          "coverage": "Lake-wide report, not a north-shore catch survey.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/southwest-zone"
+        },
+        "alerts": [
+          {
+            "summary": "ODFW requires release of brown and tiger trout; review the full current species rules.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://myodfw.com/recreation-report/fishing-report/southwest-zone"
+          },
+          {
+            "summary": "Oct 7 report says the main-ramp fish-cleaning station is under repair.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://myodfw.com/recreation-report/fishing-report/southwest-zone"
+          },
+          {
+            "summary": "Present bloom status, snow and shoreline conditions are not established by this fishing report.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/RECREATION/HARMFULALGAEBLOOMS/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW Diamond Lake report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/southwest-zone"
+          },
+          {
+            "label": "ODFW Diamond Lake seasonal and method guide",
+            "url": "https://www.dfw.state.or.us/fish/local_fisheries/diamond_lake/index.asp"
+          },
+          {
+            "label": "Oregon Marine Board launch information",
+            "url": "https://www.oregon.gov/osmb/boater-info/Pages/Opportunities-and-Access.aspx"
+          },
+          {
+            "label": "OHA current bloom advisories",
+            "url": "https://www.oregon.gov/oha/PH/HEALTHYENVIRONMENTS/RECREATION/HARMFULALGAEBLOOMS/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "detroit-lake-mongold",
+      "name": "Detroit Lake",
+      "reach": "Mongold Day-use Area",
+      "kind": "reservoir",
+      "region": "Western Cascades",
+      "description": "A large Cascade reservoir east of Salem, with coldwater lake fisheries.",
+      "sources": [
+        {
+          "label": "ODFW: Willamette Zone guide",
+          "url": "https://myodfw.com/articles/easy-angling-willamette-zone"
+        },
+        {
+          "label": "Oregon State Parks: Detroit Lake",
+          "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=65"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "detroit-lake-mongold",
+        "target_species": [
+          "Rainbow trout",
+          "Kokanee"
+        ],
+        "access_summary": "Mongold launch; check lake level",
+        "access_detail": "Mongold Day-use Area has a public ramp, trailer parking, restrooms and picnic facilities. Falling reservoir levels change shoreline access and launch usability; use the current operator notice before towing.",
+        "access_point": {
+          "label": "Mongold Day-use Area",
+          "map_query": "Mongold Day Use Area Detroit Lake Oregon"
+        },
+        "seasonal_summary": "Trout: spring, early summer, fall",
+        "seasonal_detail": "Cooler surface water favors rainbow fishing. Kokanee tend to move deeper as summer advances; lake-wide patterns do not establish fish depth at Mongold today.",
+        "methods": "Try standard trout presentations from bank or boat. For kokanee, ODFW describes trolling small spinners behind flashers or jigging; depth control matters.",
+        "report": {
+          "summary": "Trout remained active; Mongold was the remaining usable ramp in this dated report.",
+          "reported_on": "2026-09-28",
+          "checked_on": "2026-10-12",
+          "coverage": "Lake-wide fishing; Mongold ramp update, not live level.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Other ramps were out of water on Sept. 28. Recheck Mongold before towing.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+          },
+          {
+            "summary": "Local bloom conditions are unverified. Check current notices; an absent advisory does not establish safety.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "State Parks: Mongold",
+            "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=63"
+          },
+          {
+            "label": "ODFW: Willamette fishing guide",
+            "url": "https://myodfw.com/articles/easy-angling-willamette-zone"
+          },
+          {
+            "label": "ODFW: willamette fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "henry-hagg-lake",
+      "name": "Henry Hagg Lake",
+      "reach": "Scoggins Valley Park",
+      "kind": "reservoir",
+      "region": "Portland area",
+      "description": "A Coast Range foothill reservoir combining trout and warmwater fishing.",
+      "sources": [
+        {
+          "label": "ODFW: Willamette Zone guide",
+          "url": "https://myodfw.com/articles/easy-angling-willamette-zone"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "henry-hagg-lake",
+        "target_species": [
+          "Rainbow trout",
+          "Smallmouth bass",
+          "Largemouth bass",
+          "Yellow perch",
+          "Crappie"
+        ],
+        "access_summary": "Shoreline, fishing pier + ramps",
+        "access_detail": "Scoggins Valley Park provides shore access, two launches, an accessible fishing pier and restrooms. The public C-Ramp recreation area is one named arrival point; check current park hours and ramp notices.",
+        "access_point": {
+          "label": "Hagg Lake C-Ramp Recreation Area",
+          "map_query": "Henry Hagg Lake C Ramp Recreation Area Gaston Oregon"
+        },
+        "seasonal_summary": "Spring trout; warmwater bass",
+        "seasonal_detail": "Early-season bank trout and warmer-water bass offer different trips. Bass use shallow arms as water warms; reservoir drawdown changes available cover.",
+        "methods": "ODFW suggests spinners for bank trout and soft plastics, grubs or jigs for bass. Work submerged structure and adjust to water level.",
+        "report": {
+          "summary": "ODFW described active fall bass around submerged structure; recheck park conditions.",
+          "reported_on": "2026-10-05",
+          "checked_on": "2026-10-12",
+          "coverage": "Lake-wide; no C-Ramp survey or measured temperature.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+        },
+        "alerts": [
+          {
+            "summary": "OHA statewide mercury advisory applies to bass. Review species-specific consumption guidance before keeping fish.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx"
+          },
+          {
+            "summary": "Local bloom conditions are unverified. Check current notices; an absent advisory does not establish safety.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW: Willamette fishing guide",
+            "url": "https://myodfw.com/articles/easy-angling-willamette-zone"
+          },
+          {
+            "label": "Washington County: C-Ramp location",
+            "url": "https://www.washingtoncountyor.gov/home/news/2024/07/09/washington-county-parks-2024-summer-concert-series"
+          },
+          {
+            "label": "ODFW: willamette fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/willamette-zone"
+          },
+          {
+            "label": "OHA: fish consumption advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/FishConsumption/Pages/fishadvisories.aspx"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "odell-lake-princess-creek",
+      "name": "Odell Lake",
+      "reach": "North shore at Princess Creek",
+      "kind": "lake",
+      "region": "Central Cascades",
+      "description": "A large natural lake beside Highway 58, known for kokanee and lake trout.",
+      "sources": [
+        {
+          "label": "ODFW: Central Zone guide",
+          "url": "https://myodfw.com/articles/easy-angling-central-zone"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "odell-lake-princess-creek",
+        "target_species": [
+          "Kokanee",
+          "Lake trout",
+          "Rainbow trout"
+        ],
+        "access_summary": "Princess Creek: public ramp and campground",
+        "access_detail": "Recreation.gov identifies Princess Creek Campground and its Odell Lake boat ramp. ODFW names the adjacent north shore as a kokanee starting area. Check day-use access and launch conditions independently of a camping reservation.",
+        "access_point": {
+          "label": "Princess Creek Campground and Boat Ramp",
+          "map_query": "Princess Creek Campground Boat Ramp Odell Lake Oregon"
+        },
+        "seasonal_summary": "Spring/fall fish; November closure notice",
+        "seasonal_detail": "ODFW guide timing favors spring and fall for kokanee and lake trout. Seasonal habitat patterns are separate from the approaching angling closure.",
+        "methods": "Troll or jig for kokanee at the depth of marked schools. Boat access improves reach; do not assign a depth without present observations.",
+        "report": {
+          "summary": "ODFW reports small kokanee and productive lake-trout fishing.",
+          "reported_on": "2026-09-14",
+          "checked_on": "2026-10-12",
+          "coverage": "Odell Lake overall; Princess Creek is not separately sampled.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+        },
+        "alerts": [
+          {
+            "summary": "ODFW reports angling closes Nov 1, 2026; bull trout must be released.",
+            "status": "advisory",
+            "checked_on": "2026-10-12",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "summary": "Current wind, waves, bloom status and launch usability need a trip-day check.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/osmb/boater-info/Pages/Opportunities-and-Access.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "ODFW Odell report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/central-zone"
+          },
+          {
+            "label": "ODFW Odell seasonal guide",
+            "url": "https://myodfw.com/articles/easy-angling-central-zone"
+          },
+          {
+            "label": "Recreation.gov: Princess Creek",
+            "url": "https://www.recreation.gov/camping/campgrounds/267079"
+          },
+          {
+            "label": "ODFW kokanee methods",
+            "url": "https://myodfw.com/articles/kokanee-fishing-oregon"
+          },
+          {
+            "label": "Oregon Marine Board access information",
+            "url": "https://www.oregon.gov/osmb/boater-info/Pages/Opportunities-and-Access.aspx"
+          }
+        ]
+      },
+      "readings": null
+    },
+    {
+      "id": "wallowa-lake-state-park",
+      "name": "Wallowa Lake",
+      "reach": "South end at Wallowa Lake State Park",
+      "kind": "lake",
+      "region": "Northeast Oregon",
+      "description": "A natural lake at the foot of the Wallowa Mountains with kokanee and trout fisheries.",
+      "sources": [
+        {
+          "label": "ODFW: Northeast Zone guide",
+          "url": "https://myodfw.com/articles/easy-angling-northeast-zone"
+        }
+      ],
+      "gauge": null,
+      "planning": {
+        "water_id": "wallowa-lake-state-park",
+        "target_species": [
+          "Rainbow trout",
+          "Kokanee",
+          "Lake trout"
+        ],
+        "access_summary": "South-shore bank + park launch",
+        "access_detail": "Wallowa Lake State Park provides south-end shore access, a boat launch, picnic areas and restrooms. Marina rentals and services are seasonal; the park notes service changes from October into May.",
+        "access_point": {
+          "label": "Wallowa Lake State Park boat launch",
+          "map_query": "Wallowa Lake State Park boat launch Joseph Oregon"
+        },
+        "seasonal_summary": "Kokanee: May-early July",
+        "seasonal_detail": "Kokanee are generally shallower in May-early July and move deeper later. Stocked rainbows offer a shore option at the south end; spawning fish in the inlet are separate from the lake fishery.",
+        "methods": "Cast spinners or fish a float presentation for nearshore rainbows. Troll a small spinner or jig for kokanee, adjusting depth to observed fish rather than assuming a fixed depth.",
+        "report": {
+          "summary": "ODFW described south-end nearshore trout and deeper kokanee, generally below 45 feet; inlet kokanee spawning had begun.",
+          "reported_on": "2026-09-24",
+          "checked_on": "2026-10-12",
+          "coverage": "Lake-wide report with south-end trout guidance; reported kokanee depth is dated angling information, not a live measurement.",
+          "url": "https://myodfw.com/recreation-report/fishing-report/northeast-zone"
+        },
+        "alerts": [
+          {
+            "summary": "Marina services are seasonal; current facilities and temporary closures remain unverified. Check the park before relying on rentals or facilities.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=20"
+          },
+          {
+            "summary": "Local bloom conditions are unverified. Check current notices; an absent advisory does not establish safety.",
+            "status": "unverified",
+            "checked_on": null,
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ],
+        "checked_on": "2026-10-12",
+        "sources": [
+          {
+            "label": "State Parks: Wallowa Lake",
+            "url": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=20"
+          },
+          {
+            "label": "ODFW: Northeast fishing guide",
+            "url": "https://myodfw.com/articles/easy-angling-northeast-zone"
+          },
+          {
+            "label": "ODFW: northeast fishing report",
+            "url": "https://myodfw.com/recreation-report/fishing-report/northeast-zone"
+          },
+          {
+            "label": "OHA: current cyanobacteria advisories",
+            "url": "https://www.oregon.gov/oha/ph/HealthyEnvironments/Recreation/HarmfulAlgaeBlooms/Pages/Blue-GreenAlgaeAdvisories.aspx"
+          }
+        ]
+      },
+      "readings": null
+    }
+  ]
+}
